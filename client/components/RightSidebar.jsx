@@ -21,7 +21,7 @@ const RightSidebar = () => (
         style={{
             display: "flex",
             flexDirection: "column",
-            padding: "20px 16px",
+            padding: "24px 18px",
             height: "100%",
         }}
     >
@@ -35,18 +35,18 @@ const RightSidebar = () => (
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            gap: 12,
+                            gap: 14,
                             width: "100%",
-                            padding: "10px 10px",
+                            padding: "12px 14px",
                             background: item.active ? "var(--color-accent-light)" : "none",
                             border: "none",
                             cursor: "pointer",
                             color: item.active ? "var(--color-accent)" : "var(--color-mid)",
-                            fontSize: 14,
+                            fontSize: 15,
                             fontFamily: "inherit",
                             fontWeight: item.active ? 700 : 400,
                             borderRadius: 6,
-                            marginBottom: 2,
+                            marginBottom: 4,
                             textAlign: "right",
                             transition: "background 0.15s, color 0.15s",
                         }}
@@ -63,7 +63,7 @@ const RightSidebar = () => (
                             }
                         }}
                     >
-                        <Icon size={20} fill={item.active ? "var(--color-accent)" : "none"} />
+                        <Icon size={22} fill={item.active ? "var(--color-accent)" : "none"} />
                         {item.label}
                     </button>
                 );
@@ -71,24 +71,24 @@ const RightSidebar = () => (
         </nav>
 
         {/* More */}
-        <div style={{ marginTop: 16 }}>
+        <div style={{ marginTop: 20 }}>
             <button
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 10,
+                    gap: 12,
                     width: "100%",
-                    padding: "10px",
+                    padding: "12px 14px",
                     background: "none",
                     border: "none",
                     cursor: "pointer",
                     color: "var(--color-mid)",
-                    fontSize: 14,
+                    fontSize: 15,
                     fontFamily: "inherit",
                     borderRadius: 6,
                 }}
             >
-                <IcoMoreV size={20} />
+                <IcoMoreV size={22} />
                 المزيد
             </button>
         </div>

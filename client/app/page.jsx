@@ -4,16 +4,20 @@ import { redirect, RedirectType } from "next/navigation";
 
 export default async function Health() {
     let data;
+    let healthy = true;
     try {
         const res = await fetch("http://localhost:3000/api/health");
         data = await res.json();
     } catch (e) {
-        return <p>Error: {e.message}</p>
+        healthy = false;
+        return <p>Error: {e.message}</p>;
     } finally {
-        if (data.status === "ok") {
-            redirect("/feed");
-        } else {
-            return <p>Status: {data.status}</p>;
+        if (healthy) {
+            if (data.status === "ok") {
+                redirect("/feed");
+            } else {
+                return <p>Status: {data.status}</p>;
+            }
         }
     }
 }

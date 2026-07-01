@@ -12,7 +12,7 @@ import Avatar from "@/components/Avatar";
 import Tabs from "@/components/Tabs";
 import AuthModal from "@/components/AuthModal";
 
-const isAuthenticated = true; // TODO: Replace with actual auth check
+const isAuthenticated = false; // TODO: Replace with actual auth check
 
 const LeftPanel = ({ onLogin, isAuthenticated }) => {
     const [subs, setSubs] = useState(WRITERS.map((w) => w.sub));
@@ -21,8 +21,8 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
         background: "var(--color-surface)",
         border: "1px solid var(--color-border)",
         borderRadius: 8,
-        padding: "18px 16px",
-        marginBottom: 14,
+        padding: "24px 20px",
+        marginBottom: 18,
     };
 
     if (isAuthenticated) {
@@ -31,15 +31,15 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                 <div style={cardStyle}>
                     <h4
                         style={{
-                            fontSize: 13,
-                            fontWeight: 700,
-                            color: "var(--color-ink)",
-                            marginBottom: 14,
-                        }}
-                    >
-                        استكشف المواضيع
-                    </h4>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                                    fontSize: 15,
+                                    fontWeight: 700,
+                                    color: "var(--color-ink)",
+                                    marginBottom: 16,
+                                }}
+                            >
+                                استكشف المواضيع
+                            </h4>
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                         {TAGS.map((tag) => (
                             <button
                                 key={tag}
@@ -47,8 +47,8 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                                     background: "var(--color-tag-bg)",
                                     border: "1px solid var(--color-border)",
                                     borderRadius: 99,
-                                    padding: "5px 13px",
-                                    fontSize: 12,
+                                    padding: "6px 15px",
+                                    fontSize: 13,
                                     color: "var(--color-ink)",
                                     cursor: "pointer",
                                     fontFamily: "inherit",
@@ -78,12 +78,12 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "center",
-                            marginBottom: 14,
+                            marginBottom: 16,
                         }}
                     >
                         <h4
                             style={{
-                                fontSize: 13,
+                                fontSize: 15,
                                 fontWeight: 700,
                                 color: "var(--color-ink)",
                             }}
@@ -95,7 +95,7 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
-                                fontSize: 12,
+                                fontSize: 13,
                                 color: "var(--color-accent)",
                                 fontFamily: "inherit",
                             }}
@@ -109,15 +109,15 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 10,
-                                marginBottom: i < WRITERS.length - 1 ? 14 : 0,
+                                gap: 12,
+                                marginBottom: i < WRITERS.length - 1 ? 18 : 0,
                             }}
                         >
-                            <Avatar initials={w.avatar} size={36} bg="var(--color-accent)" />
+                            <Avatar initials={w.avatar} size={40} bg="var(--color-accent)" />
                             <span
                                 style={{
                                     flex: 1,
-                                    fontSize: 13,
+                                    fontSize: 14,
                                     fontWeight: 500,
                                     color: "var(--color-ink)",
                                     lineHeight: 1.3,
@@ -136,8 +136,8 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                                     color: subs[i] ? "var(--color-ink)" : "var(--color-white)",
                                     border: "none",
                                     borderRadius: 99,
-                                    padding: "5px 12px",
-                                    fontSize: 12,
+                                    padding: "6px 14px",
+                                    fontSize: 13,
                                     cursor: "pointer",
                                     fontFamily: "inherit",
                                     fontWeight: 600,
@@ -159,9 +159,9 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                     style={{
                         background: "var(--color-dark-card)",
                         borderRadius: 8,
-                        padding: "22px 16px",
+                        padding: "28px 20px",
                         textAlign: "center",
-                        marginBottom: 14,
+                        marginBottom: 18,
                     }}
                 >
                     <div
@@ -173,15 +173,15 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                     >
                         <span
                             style={{
-                                fontFamily:
-                                    "var(--font-wordmark), 'Noto Serif Arabic', serif",
-                                fontWeight: 700,
-                                fontSize: 22,
-                                color: "var(--color-accent-light)",
-                                letterSpacing: -0.5,
-                                flexShrink: 0,
-                                cursor: "pointer",
-                                transform: "scaleX(1.1)",
+                            fontFamily:
+                                "var(--font-wordmark), 'Noto Serif Arabic', serif",
+                            fontWeight: 700,
+                            fontSize: 24,
+                            color: "var(--color-accent-light)",
+                            letterSpacing: -0.5,
+                            flexShrink: 0,
+                            cursor: "pointer",
+                            transform: "scaleX(1.1)",
                             }}
                         >
                             مَشْرَقَة
@@ -189,10 +189,10 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                     </div>
                     <h3
                         style={{
-                            fontSize: 15,
+                            fontSize: 17,
                             fontWeight: 700,
                             color: "var(--color-white)",
-                            marginBottom: 8,
+                            marginBottom: 10,
                             lineHeight: 1.3,
                         }}
                     >
@@ -200,9 +200,9 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                     </h3>
                     <p
                         style={{
-                            fontSize: 13,
+                            fontSize: 14,
                             color: "#aaaaaa",
-                            marginBottom: 18,
+                            marginBottom: 22,
                             lineHeight: 1.5,
                         }}
                     >
@@ -211,19 +211,19 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                     <button
                         onClick={onLogin}
                         style={{
-                            display: "block",
-                            width: "100%",
-                            background: "var(--color-accent)",
-                            color: "var(--color-white)",
-                            border: "none",
-                            borderRadius: 6,
-                            padding: "12px",
-                            fontSize: 14,
-                            fontWeight: 700,
-                            cursor: "pointer",
-                            fontFamily: "inherit",
-                            marginBottom: 10,
-                            transition: "filter 0.15s",
+                                    display: "block",
+                                    width: "100%",
+                                    background: "var(--color-accent)",
+                                    color: "var(--color-white)",
+                                    border: "none",
+                                    borderRadius: 6,
+                                    padding: "14px",
+                                    fontSize: 15,
+                                    fontWeight: 700,
+                                    cursor: "pointer",
+                                    fontFamily: "inherit",
+                                    marginBottom: 12,
+                                    transition: "filter 0.15s",
                         }}
                         onMouseEnter={(e) =>
                             (e.currentTarget.style.filter = "brightness(1.15)")
@@ -236,18 +236,18 @@ const LeftPanel = ({ onLogin, isAuthenticated }) => {
                     </button>
                     <button
                         style={{
-                            display: "block",
-                            width: "100%",
-                            background: "var(--color-dark-surface)",
-                            color: "var(--color-white)",
-                            border: "none",
-                            borderRadius: 6,
-                            padding: "12px",
-                            fontSize: 14,
-                            fontWeight: 600,
-                            cursor: "pointer",
-                            fontFamily: "inherit",
-                            transition: "background 0.15s",
+                                    display: "block",
+                                    width: "100%",
+                                    background: "var(--color-dark-surface)",
+                                    color: "var(--color-white)",
+                                    border: "none",
+                                    borderRadius: 6,
+                                    padding: "14px",
+                                    fontSize: 15,
+                                    fontWeight: 600,
+                                    cursor: "pointer",
+                                    fontFamily: "inherit",
+                                    transition: "background 0.15s",
                         }}
                         onMouseEnter={(e) =>
                             (e.currentTarget.style.background = "#3a3a3a")
@@ -328,7 +328,7 @@ export default function App() {
         },
         desktopGrid: {
             display: "grid",
-            gridTemplateColumns: isTablet ? "240px 1fr" : "240px 1fr 340px",
+            gridTemplateColumns: isTablet ? "240px 1fr" : "240px 1fr 350px",
             width: "100%",
             minHeight: `calc(100vh - ${HEADER_H}px)`,
             alignItems: "start",
@@ -341,18 +341,17 @@ export default function App() {
             overflowY: "auto",
         },
         centerWrap: {
-            // Fill the full 1fr column, no maxWidth here
-            padding: isTablet ? "24px 32px" : "24px 48px",
+            padding: isTablet ? "24px 36px" : "28px 48px",
             minWidth: 0,
             borderLeft: isTablet ? "none" : "1px solid var(--color-border)",
         },
         // Inner wrapper used inside <main> to cap content width and center it
         centerInner: {
-            maxWidth: 680,
+            maxWidth: 700,
             margin: "0 auto",
         },
         leftPanelWrap: {
-            padding: "24px 20px",
+            padding: "28px 24px",
             position: "sticky",
             top: HEADER_H,
             height: `calc(100vh - ${HEADER_H}px)`,
@@ -366,7 +365,7 @@ export default function App() {
         return (
             <div style={styles.root}>
                 <MobileHeader onLogin={openLogin} />
-                <main style={{ padding: "16px 14px 80px" }}>
+                <main style={{ padding: "16px 18px 80px" }}>
                     <Tabs active={tab} setActive={setTab} tabList={tabList} />
                     {ARTICLES.map((a) => (
                         <ArticleCard key={a.id} article={a} isMobile />
@@ -416,7 +415,7 @@ export default function App() {
                 )}
             </div>
         );
-    } else {
+    } else { // Desktop
         return (
             <div style={styles.root}>
                 <GlobalStyle />

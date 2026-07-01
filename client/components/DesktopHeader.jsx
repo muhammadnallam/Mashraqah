@@ -14,6 +14,7 @@ const DesktopHeader = () => (
             alignItems: "center",
             padding: "0 24px",
             height: 57,
+
             gap: 16,
         }}
     >
@@ -23,7 +24,7 @@ const DesktopHeader = () => (
                     fontFamily:
                         "var(--font-wordmark), 'Noto Serif Arabic', serif",
                     fontWeight: 700,
-                    fontSize: 22,
+                    fontSize: 24,
                     color: "var(--color-accent)",
                     letterSpacing: -0.5,
                     flexShrink: 0,
@@ -43,12 +44,12 @@ const DesktopHeader = () => (
                 background: "var(--color-bg)",
                 border: "1px solid var(--color-border)",
                 borderRadius: 99,
-                padding: "7px 14px",
+                padding: "9px 16px",
                 flex: 1,
                 maxWidth: 280,
             }}
         >
-            <IcoSearch size={16} />
+            <IcoSearch size={18} />
             <input
                 placeholder="بحث"
                 style={{
@@ -74,30 +75,30 @@ const DesktopHeader = () => (
                 background: "none",
                 border: "none",
                 color: "var(--color-mid)",
-                fontSize: 14,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                flexShrink: 0,
-                transition: "color 0.15s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
-        >
-            <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                    fontSize: 15,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    flexShrink: 0,
+                    transition: "color 0.15s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
             >
-                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-            </svg>
-            اكتب
-        </button>
+                <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                >
+                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                </svg>
+                اكتب
+            </button>
 
         <button
             style={{
@@ -112,7 +113,7 @@ const DesktopHeader = () => (
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
         >
-            <IcoBell size={22} />
+            <IcoBell size={24} />
         </button>
 
         <Avatar initials="أن" size={34} bg="var(--color-accent)" />

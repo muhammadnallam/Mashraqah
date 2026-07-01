@@ -15,7 +15,7 @@ const ArticleCard = ({ article, isMobile }) => {
     return (
         <article
             style={{
-                padding: "22px 0",
+                padding: "32px 0",
                 borderBottom: "1px solid var(--color-border)",
             }}
         >
@@ -48,24 +48,24 @@ const ArticleCard = ({ article, isMobile }) => {
                 </span>
             </div> */}
 
-            <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+            <div style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
                     <div
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            gap: 7,
-                            marginBottom: 9,
+                            gap: 8,
+                            marginBottom: 12,
                         }}
                     >
                         <Avatar
                             initials={article.authorAvatar}
-                            size={22}
+                            size={28}
                             bg="var(--color-accent-med)"
                         />
                         <span
                             style={{
-                                fontSize: 13,
+                                fontSize: 14,
                                 fontWeight: 600,
                                 color: "var(--color-ink)",
                             }}
@@ -75,13 +75,13 @@ const ArticleCard = ({ article, isMobile }) => {
                         {article.pub && (
                             <>
                                 <span
-                                    style={{ color: "var(--color-light)", fontSize: 12 }}
+                                    style={{ color: "var(--color-light)", fontSize: 13 }}
                                 >
                                     في
                                 </span>
                                 <span
                                     style={{
-                                        fontSize: 13,
+                                        fontSize: 14,
                                         fontWeight: 500,
                                         color: "var(--color-ink)",
                                     }}
@@ -90,10 +90,10 @@ const ArticleCard = ({ article, isMobile }) => {
                                 </span>
                             </>
                         )}
-                        <span style={{ color: "var(--color-light)", fontSize: 12 }}>
+                        <span style={{ color: "var(--color-light)", fontSize: 13 }}>
                             ·
                         </span>
-                        <span style={{ fontSize: 12, color: "var(--color-light)" }}>
+                        <span style={{ fontSize: 13, color: "var(--color-light)" }}>
                             {article.date}
                         </span>
                     </div>
@@ -103,11 +103,11 @@ const ArticleCard = ({ article, isMobile }) => {
                             style={{
                                 fontFamily:
                                     "Georgia, 'Noto Serif Arabic', serif",
-                                fontSize: isMobile ? 16 : 18,
+                                fontSize: isMobile ? 18 : 22,
                                 fontWeight: 700,
                                 color: "var(--color-ink)",
-                                lineHeight: 1.35,
-                                marginBottom: 7,
+                                lineHeight: 1.3,
+                                marginBottom: 8,
                                 cursor: "pointer",
                             }}
                         >
@@ -117,10 +117,10 @@ const ArticleCard = ({ article, isMobile }) => {
 
                     <p
                         style={{
-                            fontSize: 14,
+                            fontSize: 16,
                             color: "var(--color-mid)",
-                            lineHeight: 1.65,
-                            marginBottom: 14,
+                            lineHeight: 1.6,
+                            marginBottom: 16,
                             display: "-webkit-box",
                             WebkitLineClamp: 2,
                             WebkitBoxOrient: "vertical",
@@ -134,16 +134,16 @@ const ArticleCard = ({ article, isMobile }) => {
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            gap: 14,
+                            gap: 16,
                         }}
                     >
                         <span
                             style={{
-                                fontSize: 11,
+                                fontSize: 13,
                                 color: "var(--color-mid)",
                                 background: "var(--color-tag-bg)",
                                 borderRadius: 99,
-                                padding: "3px 9px",
+                                padding: "4px 11px",
                                 whiteSpace: "nowrap",
                                 flexShrink: 0,
                             }}
@@ -155,16 +155,16 @@ const ArticleCard = ({ article, isMobile }) => {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 4,
+                                gap: 5,
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
                                 color: "var(--color-mid)",
-                                fontSize: 13,
+                                fontSize: 14,
                                 padding: 0,
                             }}
                         >
-                            <IcoClap size={15} />
+                            <IcoClap size={16} />
                             <span>{article.claps}</span>
                         </button>
 
@@ -177,11 +177,11 @@ const ArticleCard = ({ article, isMobile }) => {
                                 border: "none",
                                 cursor: "pointer",
                                 color: "var(--color-mid)",
-                                fontSize: 13,
+                                fontSize: 14,
                                 padding: 0,
                             }}
                         >
-                            <IcoComment size={15} />
+                            <IcoComment size={16} />
                             <span>{article.comments}</span>
                         </button>
 
@@ -194,11 +194,11 @@ const ArticleCard = ({ article, isMobile }) => {
                                 border: "none",
                                 cursor: "pointer",
                                 color: "var(--color-mid)",
-                                fontSize: 13,
+                                fontSize: 14,
                                 padding: 0,
                             }}
                         >
-                            <IcoShare size={15} />
+                            <IcoShare size={16} />
                             <span>{article.reposts}</span>
                         </button>
 
@@ -214,7 +214,7 @@ const ArticleCard = ({ article, isMobile }) => {
                                 transition: "color 0.15s",
                             }}
                         >
-                            <IcoBookmark size={15} fill={saved ? "var(--color-accent)" : "none"} />
+                            <IcoBookmark size={16} fill={saved ? "var(--color-accent)" : "none"} />
                         </button>
                         <button
                             style={{
@@ -225,7 +225,7 @@ const ArticleCard = ({ article, isMobile }) => {
                                 padding: 4,
                             }}
                         >
-                            <IcoMoreH size={15} />
+                            <IcoMoreH size={16} />
                         </button>
                     </div>
                 </div>
@@ -235,8 +235,8 @@ const ArticleCard = ({ article, isMobile }) => {
                         src={article.image}
                         alt=""
                         style={{
-                            width: isMobile ? 80 : 110,
-                            height: isMobile ? 80 : 110,
+                            width: isMobile ? 100 : 140,
+                            height: isMobile ? 100 : 140,
                             objectFit: "cover",
                             borderRadius: 4,
                             flexShrink: 0,

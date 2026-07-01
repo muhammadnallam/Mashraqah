@@ -23,7 +23,7 @@ const MobileHeader = ({ onLogin }) => (
                     fontFamily:
                         "var(--font-wordmark), 'Noto Serif Arabic', serif",
                     fontWeight: 700,
-                    fontSize: 20,
+                    fontSize: 22,
                     transform: "scaleX(1.1)",
 color: "var(--color-ink)",
                     letterSpacing: -0.5,
@@ -46,7 +46,7 @@ color: "var(--color-ink)",
                 padding: 4,
             }}
         >
-            <IcoSearch size={20} />
+            <IcoSearch size={22} />
         </button>
 
         <button
@@ -57,15 +57,15 @@ color: "var(--color-ink)",
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                color: "var(--color-mid)",
-                fontSize: 13,
-                fontFamily: "inherit",
-                padding: "4px 2px",
+                            color: "var(--color-mid)",
+                            fontSize: 14,
+                            fontFamily: "inherit",
+                            padding: "4px 2px",
             }}
         >
-            <svg
-                width="18"
-                height="18"
+                <svg
+                    width="20"
+                    height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -85,8 +85,8 @@ color: "var(--color-ink)",
                 background: "none",
                 border: "1px solid var(--color-border)",
                 borderRadius: 99,
-                padding: "5px 12px",
-                fontSize: 12,
+                padding: "6px 14px",
+                fontSize: 13,
                 fontFamily: "inherit",
                 color: "var(--color-ink)",
                 cursor: "pointer",
@@ -108,7 +108,7 @@ color: "var(--color-ink)",
                 padding: 4,
             }}
         >
-            <IcoBell size={20} />
+            <IcoBell size={22} />
             <span
                 style={{
                     position: "absolute",
@@ -123,7 +123,7 @@ color: "var(--color-ink)",
             />
         </button>
 
-        <Avatar initials="أن" size={28} bg="var(--color-accent)" />
+        <Avatar initials="أن" size={32} bg="var(--color-accent)" />
     </header>
 );
 
