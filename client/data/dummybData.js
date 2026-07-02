@@ -1,4 +1,4 @@
-// This file contains AI-generated dummy content for simulating real-world scenarios. 
+// This file contains AI-generated dummy content for simulating real-world scenarios.
 export const ARTICLES = [
     {
         id: 1,

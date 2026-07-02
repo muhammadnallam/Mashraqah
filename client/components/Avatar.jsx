@@ -1,4 +1,9 @@
-const Avatar = ({ initials, size = 32, bg = "var(--color-mid)", color = "var(--color-white)" }) => (
+const Avatar = ({
+    initials,
+    size = 32,
+    bg = "var(--color-mid)",
+    color = "var(--color-white)",
+}) => (
     <div
         style={{
             width: size,

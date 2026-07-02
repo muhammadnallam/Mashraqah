@@ -1,4 +1,3 @@
-
 import {
     IcoHome,
     IcoInbox,
@@ -42,7 +41,9 @@ const MobileBottomNav = () => {
                             background: "none",
                             border: "none",
                             cursor: "pointer",
-                            color: item.active ? "var(--color-accent)" : "var(--color-mid)",
+                            color: item.active
+                                ? "var(--color-accent)"
+                                : "var(--color-mid)",
                             fontSize: 10,
                             fontFamily: "inherit",
                             gap: 3,

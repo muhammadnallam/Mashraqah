@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { IcoClap, IcoComment, IcoShare, IcoBookmark, IcoMoreH } from "./Icons";
 
-
 const ArticleActionBar = ({ claps, comments, reposts, saved, onSave }) => {
     const [clapCount, setClapCount] = useState(
         parseInt(claps.replace(/[^\d]/g, "")) || 0,
@@ -45,7 +44,14 @@ const ArticleActionBar = ({ claps, comments, reposts, saved, onSave }) => {
                 >
                     <IcoClap size={18} />
                 </button>
-                <span style={{ fontSize: 13, color: clapped ? "var(--color-accent)" : "var(--color-mid)" }}>
+                <span
+                    style={{
+                        fontSize: 13,
+                        color: clapped
+                            ? "var(--color-accent)"
+                            : "var(--color-mid)",
+                    }}
+                >
                     {clapCount.toLocaleString("ar")}
                 </span>
             </div>
@@ -54,14 +60,18 @@ const ArticleActionBar = ({ claps, comments, reposts, saved, onSave }) => {
                 <button style={btnStyle()}>
                     <IcoComment size={18} />
                 </button>
-                <span style={{ fontSize: 13, color: "var(--color-mid)" }}>{comments}</span>
+                <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
+                    {comments}
+                </span>
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <button style={btnStyle()}>
                     <IcoShare size={18} />
                 </button>
-                <span style={{ fontSize: 13, color: "var(--color-mid)" }}>{reposts}</span>
+                <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
+                    {reposts}
+                </span>
             </div>
 
             <div style={{ flex: 1 }} />

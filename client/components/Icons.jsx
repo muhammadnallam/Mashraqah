@@ -83,6 +83,28 @@ export const IcoBookmark = (p) => (
     <Ico {...p} d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
 );
 
+export const BrandBadge = () => (
+    <div
+        style={{
+            width: 48,
+            height: 48,
+            borderRadius: 12,
+            background: "var(--color-accent-light)",
+            color: "var(--accent-color)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "0 auto 18px",
+        }}
+    >
+        <IcoBookmark
+            size={20}
+            fill="var(--color-accent)"
+            stroke="var(--color-accent)"
+        />
+    </div>
+);
+
 export const IcoMoreH = (p) => (
     <Ico
         {...p}
@@ -174,7 +196,7 @@ export const IcoGoogle = () => (
     </svg>
 );
 
-export const EyeIcon = ({ show }) => (
+export const IcoEye = ({ show }) => (
     <svg
         width="17"
         height="17"
@@ -185,7 +207,7 @@ export const EyeIcon = ({ show }) => (
         strokeLinecap="round"
         strokeLinejoin="round"
     >
-        {show ? (
+        {!show ? (
             <>
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                 <circle cx="12" cy="12" r="3" />
@@ -198,4 +220,31 @@ export const EyeIcon = ({ show }) => (
             </>
         )}
     </svg>
+);
+
+export const IcoEyeOff = (p) => (
+    <Ico
+        {...p}
+        d={
+            <>
+                <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94" />
+                <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19" />
+                <line x1="1" y1="1" x2="23" y2="23" />
+            </>
+        }
+    />
+);
+
+export const IcoBack = (p) => <Ico {...p} d="M19 12H5M12 19l-7-7 7-7" />;
+
+export const IcoClose = (p) => (
+    <Ico
+        {...p}
+        d={
+            <>
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </>
+        }
+    />
 );

@@ -122,7 +122,13 @@ const CommentsSection = ({ responses, count }) => {
                 </div>
             </div>
 
-            <div style={{ height: 1, background: "var(--color-border)", marginBottom: 28 }} />
+            <div
+                style={{
+                    height: 1,
+                    background: "var(--color-border)",
+                    marginBottom: 28,
+                }}
+            />
 
             {responses.map((r) => (
                 <div key={r.id} style={{ marginBottom: 32 }}>
@@ -135,7 +141,11 @@ const CommentsSection = ({ responses, count }) => {
                         }}
                     >
                         <div style={{ position: "relative" }}>
-                            <Avatar initials={r.avatar} size={36} bg="var(--color-accent-med)" />
+                            <Avatar
+                                initials={r.avatar}
+                                size={36}
+                                bg="var(--color-accent-med)"
+                            />
                         </div>
                         <div>
                             <div
@@ -225,7 +235,12 @@ const CommentsSection = ({ responses, count }) => {
                             >
                                 <IcoClap size={16} />
                             </button>
-                            <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
+                            <span
+                                style={{
+                                    fontSize: 13,
+                                    color: "var(--color-mid)",
+                                }}
+                            >
                                 {r.claps}
                             </span>
                         </div>
@@ -247,7 +262,12 @@ const CommentsSection = ({ responses, count }) => {
                             >
                                 <IcoComment size={16} />
                             </button>
-                            <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
+                            <span
+                                style={{
+                                    fontSize: 13,
+                                    color: "var(--color-mid)",
+                                }}
+                            >
                                 {r.replies} ردود
                             </span>
                         </div>
@@ -270,7 +290,7 @@ const CommentsSection = ({ responses, count }) => {
                     <div
                         style={{
                             height: 1,
-background: "var(--color-border)",
+                            background: "var(--color-border)",
                             marginTop: 24,
                         }}
                     />

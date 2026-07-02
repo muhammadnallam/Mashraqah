@@ -75,7 +75,10 @@ const ArticleCard = ({ article, isMobile }) => {
                         {article.pub && (
                             <>
                                 <span
-                                    style={{ color: "var(--color-light)", fontSize: 13 }}
+                                    style={{
+                                        color: "var(--color-light)",
+                                        fontSize: 13,
+                                    }}
                                 >
                                     في
                                 </span>
@@ -90,10 +93,20 @@ const ArticleCard = ({ article, isMobile }) => {
                                 </span>
                             </>
                         )}
-                        <span style={{ color: "var(--color-light)", fontSize: 13 }}>
+                        <span
+                            style={{
+                                color: "var(--color-light)",
+                                fontSize: 13,
+                            }}
+                        >
                             ·
                         </span>
-                        <span style={{ fontSize: 13, color: "var(--color-light)" }}>
+                        <span
+                            style={{
+                                fontSize: 13,
+                                color: "var(--color-light)",
+                            }}
+                        >
                             {article.date}
                         </span>
                     </div>
@@ -214,7 +227,10 @@ const ArticleCard = ({ article, isMobile }) => {
                                 transition: "color 0.15s",
                             }}
                         >
-                            <IcoBookmark size={16} fill={saved ? "var(--color-accent)" : "none"} />
+                            <IcoBookmark
+                                size={16}
+                                fill={saved ? "var(--color-accent)" : "none"}
+                            />
                         </button>
                         <button
                             style={{

@@ -1,51 +1,54 @@
 const Tabs = ({ active, setActive, tabList }) => (
-  <>
-    <style>{`
+    <>
+        <style>{`
       .tabs-scroll::-webkit-scrollbar { display: none; }
     `}</style>
 
-    <div
-      className="tabs-scroll"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 0,
-        borderBottom: "1px solid var(--color-border)",
-        marginBottom: 4,
-        overflowX: "auto",
-        scrollbarWidth: "none",       /* Firefox */
-        msOverflowStyle: "none",      /* IE/Edge */
-        WebkitOverflowScrolling: "touch",
-      }}
-    >
-      {tabList.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => setActive(tab.id)}
-          style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: "14px 20px",
-            fontSize: 16,
-            fontFamily: "inherit",
-            whiteSpace: "nowrap",
-            flexShrink: 0,
-            color: active === tab.id ? "var(--color-ink)" : "var(--color-mid)",
-            fontWeight: active === tab.id ? 700 : 400,
-            borderBottom:
-              active === tab.id
-                ? "2px solid var(--color-ink)"
-                : "2px solid transparent",
-            marginBottom: -1,
-            transition: "color 0.15s",
-          }}
+        <div
+            className="tabs-scroll"
+            style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 0,
+                borderBottom: "1px solid var(--color-border)",
+                marginBottom: 4,
+                overflowX: "auto",
+                scrollbarWidth: "none" /* Firefox */,
+                msOverflowStyle: "none" /* IE/Edge */,
+                WebkitOverflowScrolling: "touch",
+            }}
         >
-          {tab.label}
-        </button>
-      ))}
-    </div>
-  </>
+            {tabList.map((tab) => (
+                <button
+                    key={tab.id}
+                    onClick={() => setActive(tab.id)}
+                    style={{
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        padding: "14px 20px",
+                        fontSize: 16,
+                        fontFamily: "inherit",
+                        whiteSpace: "nowrap",
+                        flexShrink: 0,
+                        color:
+                            active === tab.id
+                                ? "var(--color-ink)"
+                                : "var(--color-mid)",
+                        fontWeight: active === tab.id ? 700 : 400,
+                        borderBottom:
+                            active === tab.id
+                                ? "2px solid var(--color-ink)"
+                                : "2px solid transparent",
+                        marginBottom: -1,
+                        transition: "color 0.15s",
+                    }}
+                >
+                    {tab.label}
+                </button>
+            ))}
+        </div>
+    </>
 );
 
 export default Tabs;

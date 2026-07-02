@@ -24,7 +24,6 @@ import {
     READ_MORE,
 } from "@/data/dummybData";
 
-
 const ArticleContent = ({ blocks }) => (
     <div style={{ direction: "rtl" }}>
         {blocks.map((block, i) => {
@@ -98,9 +97,13 @@ const RelatedCard = ({ article }) => (
                 display: "block",
             }}
         />
-        <div style={{ fontSize: 12, color: "var(--color-mid)", marginBottom: 6 }}>
+        <div
+            style={{ fontSize: 12, color: "var(--color-mid)", marginBottom: 6 }}
+        >
             {article.boosted && (
-                <span style={{ color: "var(--color-gold)", marginLeft: 4 }}>★</span>
+                <span style={{ color: "var(--color-gold)", marginLeft: 4 }}>
+                    ★
+                </span>
             )}
             في {article.pub} · {article.date}
         </div>
@@ -119,7 +122,9 @@ const RelatedCard = ({ article }) => (
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                 {article.boosted && (
-                    <span style={{ color: "var(--color-gold)", fontSize: 12 }}>★</span>
+                    <span style={{ color: "var(--color-gold)", fontSize: 12 }}>
+                        ★
+                    </span>
                 )}
                 <IcoClap size={14} />
                 <span style={{ fontSize: 12, color: "var(--color-mid)" }}>
@@ -155,7 +160,7 @@ const RelatedCard = ({ article }) => (
 );
 
 export default function ArticlePage() {
-    // TODO: Remove useState and "use client" to use SSG/SSR for better performance and SEO. 
+    // TODO: Remove useState and "use client" to use SSG/SSR for better performance and SEO.
     const [saved, setSaved] = useState(false);
     const [followed, setFollowed] = useState(false);
     const [width, setWidth] = useState(
@@ -224,10 +229,20 @@ export default function ArticlePage() {
                                         marginBottom: 14,
                                     }}
                                 >
-                                    <span style={{ color: "var(--color-gold)", fontSize: 14 }}>
+                                    <span
+                                        style={{
+                                            color: "var(--color-gold)",
+                                            fontSize: 14,
+                                        }}
+                                    >
                                         ★
                                     </span>
-                                    <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
+                                    <span
+                                        style={{
+                                            fontSize: 13,
+                                            color: "var(--color-mid)",
+                                        }}
+                                    >
                                         قصة للمشتركين فقط
                                     </span>
                                 </div>
@@ -268,6 +283,9 @@ export default function ArticlePage() {
                                     alignItems: "center",
                                     gap: 12,
                                     marginBottom: 20,
+                                    borderBottom:
+                                        "1px solid var(--color-border)",
+                                    paddingBottom: "20px",
                                 }}
                             >
                                 <Avatar
@@ -304,7 +322,9 @@ export default function ArticlePage() {
                                                 padding: "3px 12px",
                                                 fontSize: 13,
                                                 fontFamily: "inherit",
-                                                color: followed ? "var(--color-mid)" : "var(--color-ink)",
+                                                color: followed
+                                                    ? "var(--color-mid)"
+                                                    : "var(--color-ink)",
                                                 cursor: "pointer",
                                                 fontWeight: 500,
                                                 transition: "all 0.15s",
@@ -336,91 +356,6 @@ export default function ArticlePage() {
                                         <span>{ARTICLE.date}</span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    borderTop: "1px solid var(--color-border)",
-                                    borderBottom: "1px solid var(--color-border)",
-                                    padding: "10px 0",
-                                    gap: 20,
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: 5,
-                                    }}
-                                >
-                                    <IcoClap size={17} />
-                                    <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
-                                        {ARTICLE.claps}
-                                    </span>
-                                </div>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: 5,
-                                    }}
-                                >
-                                    <IcoComment size={17} />
-                                    <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
-                                        {ARTICLE.comments}
-                                    </span>
-                                </div>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: 5,
-                                    }}
-                                >
-                                    <IcoShare size={17} />
-                                    <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
-                                        {ARTICLE.reposts}
-                                    </span>
-                                </div>
-
-                                <div style={{ flex: 1 }} />
-
-                                <button
-                                    onClick={() => setSaved((s) => !s)}
-                                    style={{
-                                        background: "none",
-                                        border: "none",
-                                        cursor: "pointer",
-                                        color: saved ? "var(--color-accent)" : "var(--color-mid)",
-                                        padding: 4,
-                                    }}
-                                >
-                                    <IcoBookmark size={17} />
-                                </button>
-                                <button
-                                    style={{
-                                        background: "none",
-                                        border: "none",
-                                        cursor: "pointer",
-                                        color: "var(--color-mid)",
-                                        padding: 4,
-                                    }}
-                                >
-                                    <IcoShare size={17} />
-                                </button>
-                                <button
-                                    style={{
-                                        background: "none",
-                                        border: "none",
-                                        cursor: "pointer",
-                                        color: "var(--color-mid)",
-                                        padding: 4,
-                                    }}
-                                >
-                                    <IcoMoreH size={17} />
-                                </button>
                             </div>
                         </div>
 
@@ -494,7 +429,9 @@ export default function ArticlePage() {
                                                     ? "none"
                                                     : "var(--color-accent)",
                                                 border: `1px solid ${followed ? "var(--color-border)" : "var(--color-accent)"}`,
-                                                color: followed ? "var(--color-mid)" : "var(--color-white)",
+                                                color: followed
+                                                    ? "var(--color-mid)"
+                                                    : "var(--color-white)",
                                                 borderRadius: 99,
                                                 padding: "5px 16px",
                                                 fontSize: 13,
@@ -581,7 +518,8 @@ export default function ArticlePage() {
                                         transition: "border-color 0.15s",
                                     }}
                                     onMouseEnter={(e) =>
-                                        (e.currentTarget.style.borderColor = "var(--color-accent)")
+                                        (e.currentTarget.style.borderColor =
+                                            "var(--color-accent)")
                                     }
                                     onMouseLeave={(e) =>
                                         (e.currentTarget.style.borderColor =

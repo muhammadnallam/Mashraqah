@@ -1,6 +1,5 @@
-
 import { IcoBell, IcoSearch } from "@/components/Icons";
-import Avatar from "@/components/Avatar";  
+import Avatar from "@/components/Avatar";
 
 const MobileHeader = ({ onLogin }) => (
     <header
@@ -25,7 +24,7 @@ const MobileHeader = ({ onLogin }) => (
                     fontWeight: 700,
                     fontSize: 22,
                     transform: "scaleX(1.1)",
-color: "var(--color-ink)",
+                    color: "var(--color-ink)",
                     letterSpacing: -0.5,
                     flexShrink: 0,
                 }}
@@ -57,15 +56,15 @@ color: "var(--color-ink)",
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                            color: "var(--color-mid)",
-                            fontSize: 14,
-                            fontFamily: "inherit",
-                            padding: "4px 2px",
+                color: "var(--color-mid)",
+                fontSize: 14,
+                fontFamily: "inherit",
+                padding: "4px 2px",
             }}
         >
-                <svg
-                    width="20"
-                    height="20"
+            <svg
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"

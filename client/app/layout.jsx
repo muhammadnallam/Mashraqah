@@ -1,5 +1,5 @@
 import "./globals.css";
-import localFont from "next/font/local"
+import localFont from "next/font/local";
 
 const nastaliqUrdu = localFont({
     src: [
@@ -24,7 +24,7 @@ const nastaliqUrdu = localFont({
             style: "normal",
         },
     ],
-    variable: "--font-wordmark"
+    variable: "--font-wordmark",
 });
 
 export const metadata = {
