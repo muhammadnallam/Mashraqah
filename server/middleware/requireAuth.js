@@ -5,6 +5,7 @@ const verifyCookie = (req, res, next) => {
 
     if (!token) {
         res.status(401).json({message: "Missing JWT cookie"});
+        return;
     }
 
     try {
@@ -13,6 +14,7 @@ const verifyCookie = (req, res, next) => {
         next();
     } catch {
         res.status(401).json({message: "Invalid or expired token"})
+        return;
     }
 }
 

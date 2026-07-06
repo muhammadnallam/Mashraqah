@@ -29,17 +29,17 @@ router.post("/register", async (req, res) => {
 
 router.post("/logout", (req, res) => {
     res.clearCookie("jwt");
-    res.json({success: true})
+    res.json({ success: true });
 });
 
 router.delete("/delete", verifyCookie, async (req, res) => {
     await remove(req.userId);
     // TODO: Remove cookies
-    res.json({success: true});
-})
+    res.json({ success: true });
+});
 
 router.get("/me", verifyCookie, (req, res) => {
-    res.send("You are signed in!");
+    res.json(req.user);
 });
 
 module.exports = router;
