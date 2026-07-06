@@ -39,11 +39,11 @@ const InputField = ({
                         width: "100%",
                         boxSizing: "border-box",
                         padding: rightIcon
-                            ? "14px 44px 14px 16px"
-                            : "14px 16px",
+                            ? "12px 48px 12px 16px"
+                            : "12px 16px",
                         border: `1px solid ${error ? "var(--color-error)" : "var(--color-border)"}`,
-                        borderRadius: 12,
-                        fontSize: 14.5,
+                        borderRadius: 8,
+                        fontSize: 15,
                         fontFamily: "inherit",
                         color: "var(--color-ink)",
                         background: "var(--color-white)",
@@ -78,8 +78,8 @@ const InputField = ({
                     id={errId}
                     role="alert"
                     style={{
-                        margin: "6px 0 0",
-                        fontSize: 12,
+                        margin: "8px 0 0",
+                        fontSize: 13,
                         color: "var(--color-error)",
                         direction: "rtl",
                     }}
@@ -100,13 +100,15 @@ const PrimaryButton = ({
     <button
         onClick={enabled && !loading ? onClick : undefined}
         disabled={loading || !enabled}
+        onMouseEnter={(e) => { if (enabled && !loading) e.currentTarget.style.background = "var(--color-accent-hover)"; }}
+        onMouseLeave={(e) => { if (enabled && !loading) e.currentTarget.style.background = "var(--color-accent)"; }}
         style={{
             width: "100%",
-            padding: "14px",
+            padding: "12px 16px",
             borderRadius: 12,
             border: "none",
-            fontSize: 14.5,
-            fontWeight: 600,
+            fontSize: 15,
+            fontWeight: 700,
             fontFamily: "inherit",
             background:
                 enabled && !loading
@@ -184,20 +186,20 @@ const LogInView = ({ onSwitchToRegister, onLogIn, onClose }) => {
                     fontWeight: 700,
                     color: "var(--color-ink)",
                     textAlign: "center",
-                    marginBottom: 6,
+                    marginBottom: 8,
                 }}
             >
                 أهلاً بعودتك
             </h2>
             <p
                 style={{
-                    fontSize: 13.5,
+                    fontSize: 13,
                     color: "var(--color-ink)",
                     textAlign: "center",
                     marginBottom: 24,
                 }}
             >
-                أدخل بيانات الدخول أو{" "}
+                أدخل بيانات الدخول أو {" "}
                 <button
                     type="button"
                     onClick={onSwitchToRegister}
@@ -206,7 +208,7 @@ const LogInView = ({ onSwitchToRegister, onLogIn, onClose }) => {
                         border: "none",
                         padding: 0,
                         cursor: "pointer",
-                        fontSize: 13.5,
+                        fontSize: 13,
                         fontWeight: 700,
                         color: "var(--color-ink)",
                         fontFamily: "inherit",
@@ -221,11 +223,11 @@ const LogInView = ({ onSwitchToRegister, onLogIn, onClose }) => {
                     role="alert"
                     style={{
                         margin: "0 0 16px",
-                        padding: "10px 14px",
+                        padding: "8px 12px",
                         fontSize: 13,
                         color: "var(--color-white)",
                         background: "var(--color-error)",
-                        borderRadius: 10,
+                        borderRadius: 0,
                         textAlign: "center",
                     }}
                 >
@@ -272,12 +274,15 @@ const LogInView = ({ onSwitchToRegister, onLogIn, onClose }) => {
                                 padding: 0,
                                 display: "flex",
                                 color: "var(--color-mid)",
+                                transition: "color 0.15s",
                             }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                         >
                             {showPass ? (
-                                <IcoEye size={17} />
+                                <IcoEye size={16} />
                             ) : (
-                                <IcoEyeOff size={17} />
+                                <IcoEyeOff size={16} />
                             )}
                         </button>
                     }
@@ -364,14 +369,14 @@ const RegisterView = ({ onSwitchToLogIn, onRegister, onClose }) => {
                     fontWeight: 700,
                     color: "var(--color-ink)",
                     textAlign: "center",
-                    marginBottom: 6,
+                    marginBottom: 8,
                 }}
             >
                 إنشاء حساب جديد
             </h2>
             <p
                 style={{
-                    fontSize: 13.5,
+                    fontSize: 13,
                     color: "var(--color-mid)",
                     textAlign: "center",
                     marginBottom: 24,
@@ -388,7 +393,7 @@ const RegisterView = ({ onSwitchToLogIn, onRegister, onClose }) => {
                                 border: "none",
                                 padding: 0,
                                 cursor: "pointer",
-                                fontSize: 13.5,
+                                fontSize: 13,
                                 fontWeight: 700,
                                 color: "var(--color-ink)",
                                 fontFamily: "inherit",
@@ -407,11 +412,11 @@ const RegisterView = ({ onSwitchToLogIn, onRegister, onClose }) => {
                     role="alert"
                     style={{
                         margin: "0 0 16px",
-                        padding: "10px 14px",
+                        padding: "8px 12px",
                         fontSize: 13,
                         color: "var(--color-white)",
                         background: "var(--color-error)",
-                        borderRadius: 10,
+                        borderRadius: 0,
                         textAlign: "center",
                     }}
                 >
@@ -470,7 +475,7 @@ const RegisterView = ({ onSwitchToLogIn, onRegister, onClose }) => {
                                 style={{
                                     display: "flex",
                                     alignItems: "center",
-                                    gap: 10,
+                                    gap: 8,
                                     marginBottom: 12,
                                 }}
                             >
@@ -489,7 +494,10 @@ const RegisterView = ({ onSwitchToLogIn, onRegister, onClose }) => {
                                         cursor: "pointer",
                                         color: "var(--color-mid)",
                                         flexShrink: 0,
+                                        transition: "border-color 0.15s",
                                     }}
+                                    onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                                    onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
                                 >
                                     <IcoBack size={15} />
                                 </button>
@@ -528,12 +536,15 @@ const RegisterView = ({ onSwitchToLogIn, onRegister, onClose }) => {
                                             padding: 0,
                                             display: "flex",
                                             color: "var(--color-mid)",
+                                            transition: "color 0.15s",
                                         }}
+                                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                                     >
                                         {showPass ? (
-                                            <IcoEye size={17} />
+                                            <IcoEye size={16} />
                                         ) : (
-                                            <IcoEyeOff size={17} />
+                                            <IcoEyeOff size={16} />
                                         )}
                                     </button>
                                 }
@@ -632,12 +643,11 @@ export default function AuthModal({
                     width: "100%",
                     maxWidth: 400,
                     background: "var(--color-white)",
-                    borderRadius: 20,
-                    padding: "28px 28px 30px",
+                    borderRadius: 0,
+                    padding: "24px",
                     direction: "rtl",
                     fontFamily:
                         "'Noto Sans Arabic', 'Cairo', 'Segoe UI', sans-serif",
-                    boxShadow: "0 24px 70px rgba(15,15,20,0.35)",
                     animation: "authModalIn 0.18s ease",
                 }}
             >
@@ -654,7 +664,10 @@ export default function AuthModal({
                         color: "var(--color-mid)",
                         display: "flex",
                         padding: 4,
+                        transition: "color 0.15s",
                     }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                 >
                     <IcoClose size={18} />
                 </button>

@@ -1,9 +1,26 @@
 @import "tailwindcss";
 
-
 :root {
     --font-family-sans: "Noto Sans Arabic", Cairo, "Segoe UI", sans-serif;
     --font-family-serif: Georgia, "Noto Serif Arabic", serif;
+
+    /* Spacing scale (4px base) */
+    --sp-xs: 4px;
+    --sp-sm: 8px;
+    --sp-md: 16px;
+    --sp-lg: 24px;
+    --sp-xl: 48px;
+    --sp-2xl: 64px;
+    --sp-3: 12px;
+    --sp-5: 20px;
+    --sp-6: 24px;
+    --sp-8: 32px;
+    --sp-10: 40px;
+
+    /* Border radius */
+    --radius-btn: 8px;
+    --radius-pill: 99px;
+    --radius-input: 8px;
 }
 
 @theme {

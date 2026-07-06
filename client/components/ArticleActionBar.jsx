@@ -10,14 +10,14 @@ const ArticleActionBar = ({ claps, comments, reposts, saved, onSave }) => {
     const btnStyle = (active = false) => ({
         display: "flex",
         alignItems: "center",
-        gap: 6,
+        gap: 8,
         background: "none",
         border: "none",
         cursor: "pointer",
         color: active ? "var(--color-accent)" : "var(--color-mid)",
         fontSize: 13,
         fontFamily: "inherit",
-        padding: "6px 0",
+        padding: "4px 0",
         transition: "color 0.15s",
     });
 
@@ -41,6 +41,8 @@ const ArticleActionBar = ({ claps, comments, reposts, saved, onSave }) => {
                         setClapCount((c) => c + 1);
                     }}
                     style={{ ...btnStyle(clapped), gap: 0 }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = clapped ? "var(--color-accent)" : "var(--color-ink)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = clapped ? "var(--color-accent)" : "var(--color-mid)")}
                 >
                     <IcoClap size={18} />
                 </button>
@@ -57,7 +59,11 @@ const ArticleActionBar = ({ claps, comments, reposts, saved, onSave }) => {
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <button style={btnStyle()}>
+                <button
+                    style={btnStyle()}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
+                >
                     <IcoComment size={18} />
                 </button>
                 <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
@@ -66,7 +72,11 @@ const ArticleActionBar = ({ claps, comments, reposts, saved, onSave }) => {
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <button style={btnStyle()}>
+                <button
+                    style={btnStyle()}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
+                >
                     <IcoShare size={18} />
                 </button>
                 <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
@@ -76,15 +86,28 @@ const ArticleActionBar = ({ claps, comments, reposts, saved, onSave }) => {
 
             <div style={{ flex: 1 }} />
 
-            <button onClick={onSave} style={btnStyle(saved)}>
+            <button
+                    onClick={onSave}
+                    style={btnStyle(saved)}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
+                >
                 <IcoBookmark size={18} />
             </button>
 
-            <button style={btnStyle()}>
+            <button
+                    style={btnStyle()}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
+                >
                 <IcoShare size={18} />
             </button>
 
-            <button style={btnStyle()}>
+            <button
+                    style={btnStyle()}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
+                >
                 <IcoMoreH size={18} />
             </button>
         </div>

@@ -33,10 +33,10 @@ const ArticleContent = ({ blocks }) => (
                         key={i}
                         style={{
                             fontFamily: "Georgia, 'Noto Serif Arabic', serif",
-                            fontSize: 20,
+                            fontSize: 19,
                             lineHeight: 1.8,
                             color: "var(--color-ink)",
-                            marginBottom: 28,
+                            marginBottom: 24,
                             fontWeight: 400,
                         }}
                     >
@@ -49,7 +49,7 @@ const ArticleContent = ({ blocks }) => (
                         key={i}
                         style={{
                             fontFamily: "Georgia, 'Noto Serif Arabic', serif",
-                            fontSize: 26,
+                            fontSize: 24,
                             fontWeight: 700,
                             color: "var(--color-ink)",
                             marginTop: 48,
@@ -69,10 +69,10 @@ const ArticleContent = ({ blocks }) => (
                             paddingRight: 20,
                             margin: "32px 0",
                             fontFamily: "Georgia, 'Noto Serif Arabic', serif",
-                            fontSize: 22,
+                            fontSize: 19,
                             fontStyle: "italic",
                             color: "var(--color-mid)",
-                            lineHeight: 1.65,
+                            lineHeight: 1.8,
                         }}
                     >
                         {block.text}
@@ -92,13 +92,13 @@ const RelatedCard = ({ article }) => (
                 width: "100%",
                 aspectRatio: "16/9",
                 objectFit: "cover",
-                borderRadius: 4,
+                borderRadius: 0,
                 marginBottom: 12,
                 display: "block",
             }}
         />
         <div
-            style={{ fontSize: 12, color: "var(--color-mid)", marginBottom: 6 }}
+            style={{ fontSize: 13, color: "var(--color-mid)", marginBottom: 8 }}
         >
             {article.boosted && (
                 <span style={{ color: "var(--color-gold)", marginLeft: 4 }}>
@@ -110,50 +110,50 @@ const RelatedCard = ({ article }) => (
         <h4
             style={{
                 fontFamily: "Georgia, 'Noto Serif Arabic', serif",
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: 700,
                 color: "var(--color-ink)",
-                lineHeight: 1.35,
+                lineHeight: 1.3,
                 marginBottom: 8,
             }}
         >
             {article.title}
         </h4>
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                {article.boosted && (
-                    <span style={{ color: "var(--color-gold)", fontSize: 12 }}>
-                        ★
-                    </span>
-                )}
-                <IcoClap size={14} />
-                <span style={{ fontSize: 12, color: "var(--color-mid)" }}>
-                    {article.claps}
-                </span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <IcoComment size={14} />
-                <span style={{ fontSize: 12, color: "var(--color-mid)" }}>
-                    {article.comments}
-                </span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <IcoShare size={14} />
-                <span style={{ fontSize: 12, color: "var(--color-mid)" }}>
-                    {article.reposts}
-                </span>
-            </div>
-            <div style={{ flex: 1 }} />
-            <button
-                style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    color: "var(--color-mid)",
-                    padding: 0,
-                }}
-            >
-                <IcoMoreH size={14} />
+                        {article.boosted && (
+                            <span style={{ color: "var(--color-gold)", fontSize: 13 }}>
+                                ★
+                            </span>
+                        )}
+                        <IcoClap size={16} />
+                        <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
+                            {article.claps}
+                        </span>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                        <IcoComment size={16} />
+                        <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
+                            {article.comments}
+                        </span>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                        <IcoShare size={16} />
+                        <span style={{ fontSize: 13, color: "var(--color-mid)" }}>
+                            {article.reposts}
+                        </span>
+                    </div>
+                    <div style={{ flex: 1 }} />
+                    <button
+                        style={{
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                            color: "var(--color-mid)",
+                            padding: 0,
+                        }}
+                    >
+                        <IcoMoreH size={16} />
             </button>
         </div>
     </div>
@@ -211,7 +211,7 @@ export default function ArticlePage() {
             <div style={{ display: "flex" }}>
                 {!isMobile && (
                     <div style={sidebarStyle}>
-                        <RightSidebar activeItem="" />
+                        <RightSidebar sidebarOpen={sidebarOpen} activeItem="" />
                     </div>
                 )}
 
@@ -219,7 +219,7 @@ export default function ArticlePage() {
                     style={{
                         flex: 1,
                         minWidth: 0,
-                        padding: isMobile ? "24px 20px 80px" : "40px 56px 80px",
+                        padding: isMobile ? "24px 16px 80px" : "40px 48px 80px",
                     }}
                 >
                     <div style={{ maxWidth: 680, margin: "0 auto" }}>
@@ -229,14 +229,14 @@ export default function ArticlePage() {
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
-                                        gap: 6,
-                                        marginBottom: 14,
+                                        gap: 8,
+                                        marginBottom: 12,
                                     }}
                                 >
                                     <span
                                         style={{
                                             color: "var(--color-gold)",
-                                            fontSize: 14,
+                                            fontSize: 13,
                                         }}
                                     >
                                         ★
@@ -256,7 +256,7 @@ export default function ArticlePage() {
                                 style={{
                                     fontFamily:
                                         "Georgia, 'Noto Serif Arabic', serif",
-                                    fontSize: isMobile ? 28 : 38,
+                                    fontSize: isMobile ? 24 : 32,
                                     fontWeight: 700,
                                     lineHeight: 1.2,
                                     color: "var(--color-ink)",
@@ -271,9 +271,9 @@ export default function ArticlePage() {
                                 style={{
                                     fontFamily:
                                         "Georgia, 'Noto Serif Arabic', serif",
-                                    fontSize: isMobile ? 17 : 20,
+                                    fontSize: isMobile ? 17 : 19,
                                     color: "var(--color-mid)",
-                                    lineHeight: 1.6,
+                                    lineHeight: 1.8,
                                     marginBottom: 24,
                                     fontWeight: 400,
                                 }}
@@ -302,14 +302,14 @@ export default function ArticlePage() {
                                         style={{
                                             display: "flex",
                                             alignItems: "center",
-                                            gap: 10,
-                                            marginBottom: 2,
+                                            gap: 8,
+                                            marginBottom: 4,
                                         }}
                                     >
                                         <span
                                             style={{
                                                 fontSize: 15,
-                                                fontWeight: 600,
+                                                fontWeight: 500,
                                                 color: "var(--color-ink)",
                                             }}
                                         >
@@ -389,7 +389,7 @@ export default function ArticlePage() {
                             style={{
                                 borderTop: "1px solid var(--color-border)",
                                 borderBottom: "1px solid var(--color-border)",
-                                padding: "28px 0",
+                                padding: "24px 0",
                                 marginTop: 48,
                                 marginBottom: 48,
                             }}
@@ -418,7 +418,7 @@ export default function ArticlePage() {
                                         <span
                                             style={{
                                                 fontSize: 17,
-                                                fontWeight: 700,
+                                                fontWeight: 500,
                                                 color: "var(--color-ink)",
                                             }}
                                         >
@@ -441,7 +441,7 @@ export default function ArticlePage() {
                                                 fontSize: 13,
                                                 fontFamily: "inherit",
                                                 cursor: "pointer",
-                                                fontWeight: 600,
+                                                fontWeight: 500,
                                                 transition: "all 0.15s",
                                             }}
                                         >
@@ -450,10 +450,10 @@ export default function ArticlePage() {
                                     </div>
                                     <p
                                         style={{
-                                            fontSize: 14,
+                                            fontSize: 15,
                                             color: "var(--color-mid)",
-                                            lineHeight: 1.65,
-                                            marginBottom: 10,
+                                            lineHeight: 1.8,
+                                            marginBottom: 8,
                                         }}
                                     >
                                         {ARTICLE.authorBio}
@@ -480,7 +480,7 @@ export default function ArticlePage() {
                                 style={{
                                     fontFamily:
                                         "Georgia, 'Noto Serif Arabic', serif",
-                                    fontSize: 20,
+                                    fontSize: 19,
                                     fontWeight: 700,
                                     color: "var(--color-ink)",
                                     marginBottom: 24,
@@ -495,7 +495,7 @@ export default function ArticlePage() {
                                     gridTemplateColumns: isMobile
                                         ? "1fr"
                                         : "1fr 1fr",
-                                    gap: 28,
+                                    gap: 24,
                                 }}
                             >
                                 {MORE_FROM_AUTHOR.map((a) => (
@@ -514,8 +514,8 @@ export default function ArticlePage() {
                                         background: "none",
                                         border: "1px solid var(--color-border)",
                                         borderRadius: 99,
-                                        padding: "10px 28px",
-                                        fontSize: 14,
+                                        padding: "8px 24px",
+                                        fontSize: 13,
                                         fontFamily: "inherit",
                                         color: "var(--color-ink)",
                                         cursor: "pointer",
@@ -546,7 +546,7 @@ export default function ArticlePage() {
                                 style={{
                                     fontFamily:
                                         "Georgia, 'Noto Serif Arabic', serif",
-                                    fontSize: 20,
+                                    fontSize: 19,
                                     fontWeight: 700,
                                     color: "var(--color-ink)",
                                     marginBottom: 4,
@@ -556,7 +556,7 @@ export default function ArticlePage() {
                             </h3>
                             <p
                                 style={{
-                                    fontSize: 14,
+                                    fontSize: 13,
                                     color: "var(--color-mid)",
                                     marginBottom: 24,
                                 }}

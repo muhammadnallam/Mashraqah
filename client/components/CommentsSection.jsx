@@ -13,13 +13,13 @@ const CommentsSection = ({ responses, count }) => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    marginBottom: 28,
+                    marginBottom: 24,
                 }}
             >
                 <h3
                     style={{
                         fontFamily: "Georgia, 'Noto Serif Arabic', serif",
-                        fontSize: 22,
+                        fontSize: 19,
                         fontWeight: 700,
                         color: "var(--color-ink)",
                     }}
@@ -32,7 +32,7 @@ const CommentsSection = ({ responses, count }) => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="var(--color-mid)"
-                    strokeWidth="1.8"
+                    strokeWidth="1.5"
                 >
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
@@ -54,10 +54,10 @@ const CommentsSection = ({ responses, count }) => {
                         rows={1}
                         style={{
                             width: "100%",
-                            padding: "10px 14px",
+                            padding: "8px 12px",
                             border: "1px solid var(--color-border)",
-                            borderRadius: 6,
-                            fontSize: 14,
+                            borderRadius: 0,
+                            fontSize: 15,
                             fontFamily: "inherit",
                             background: "var(--color-bg)",
                             color: "var(--color-ink)",
@@ -93,12 +93,15 @@ const CommentsSection = ({ responses, count }) => {
                                     background: "none",
                                     border: "1px solid var(--color-border)",
                                     borderRadius: 99,
-                                    padding: "6px 16px",
+                                    padding: "8px 16px",
                                     fontSize: 13,
                                     fontFamily: "inherit",
                                     color: "var(--color-mid)",
                                     cursor: "pointer",
+                                    transition: "border-color 0.15s, color 0.15s",
                                 }}
+                                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--color-accent)"; e.currentTarget.style.color = "var(--color-ink)"; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--color-border)"; e.currentTarget.style.color = "var(--color-mid)"; }}
                             >
                                 إلغاء
                             </button>
@@ -108,12 +111,15 @@ const CommentsSection = ({ responses, count }) => {
                                     color: "var(--color-white)",
                                     border: "none",
                                     borderRadius: 99,
-                                    padding: "6px 16px",
+                                    padding: "8px 16px",
                                     fontSize: 13,
                                     fontFamily: "inherit",
-                                    fontWeight: 600,
+                                    fontWeight: 500,
                                     cursor: "pointer",
+                                    transition: "filter 0.15s",
                                 }}
+                                onMouseEnter={(e) => (e.currentTarget.style.filter = "brightness(1.15)")}
+                                onMouseLeave={(e) => (e.currentTarget.style.filter = "brightness(1)")}
                             >
                                 نشر
                             </button>
@@ -126,7 +132,7 @@ const CommentsSection = ({ responses, count }) => {
                 style={{
                     height: 1,
                     background: "var(--color-border)",
-                    marginBottom: 28,
+                    marginBottom: 24,
                 }}
             />
 
@@ -136,7 +142,7 @@ const CommentsSection = ({ responses, count }) => {
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            gap: 10,
+                            gap: 8,
                             marginBottom: 12,
                         }}
                     >
@@ -150,8 +156,8 @@ const CommentsSection = ({ responses, count }) => {
                         <div>
                             <div
                                 style={{
-                                    fontSize: 14,
-                                    fontWeight: 600,
+                                    fontSize: 15,
+                                    fontWeight: 500,
                                     color: "var(--color-ink)",
                                 }}
                             >
@@ -159,7 +165,7 @@ const CommentsSection = ({ responses, count }) => {
                             </div>
                             <div
                                 style={{
-                                    fontSize: 12,
+                                    fontSize: 13,
                                     color: "var(--color-gold)",
                                 }}
                             >
@@ -173,7 +179,10 @@ const CommentsSection = ({ responses, count }) => {
                                 border: "none",
                                 cursor: "pointer",
                                 color: "var(--color-mid)",
+                                transition: "color 0.15s",
                             }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                         >
                             <IcoMoreH size={16} />
                         </button>
@@ -184,8 +193,8 @@ const CommentsSection = ({ responses, count }) => {
                             style={{
                                 background: "var(--color-bg)",
                                 border: "1px solid var(--color-border)",
-                                borderRadius: 6,
-                                padding: "14px 16px",
+                                borderRadius: 0,
+                                padding: "12px 16px",
                                 marginBottom: 12,
                                 fontFamily:
                                     "Georgia, 'Noto Serif Arabic', serif",
@@ -203,8 +212,8 @@ const CommentsSection = ({ responses, count }) => {
                         style={{
                             fontSize: 15,
                             color: "var(--color-ink)",
-                            lineHeight: 1.7,
-                            marginBottom: 14,
+                            lineHeight: 1.8,
+                            marginBottom: 12,
                         }}
                     >
                         {r.text}
@@ -221,7 +230,7 @@ const CommentsSection = ({ responses, count }) => {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 5,
+                                gap: 8,
                             }}
                         >
                             <button
@@ -231,7 +240,10 @@ const CommentsSection = ({ responses, count }) => {
                                     cursor: "pointer",
                                     color: "var(--color-mid)",
                                     display: "flex",
+                                    transition: "color 0.15s",
                                 }}
+                                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                             >
                                 <IcoClap size={16} />
                             </button>
@@ -248,7 +260,7 @@ const CommentsSection = ({ responses, count }) => {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 5,
+                                gap: 8,
                             }}
                         >
                             <button
@@ -258,7 +270,10 @@ const CommentsSection = ({ responses, count }) => {
                                     cursor: "pointer",
                                     color: "var(--color-mid)",
                                     display: "flex",
+                                    transition: "color 0.15s",
                                 }}
+                                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                             >
                                 <IcoComment size={16} />
                             </button>
@@ -279,9 +294,12 @@ const CommentsSection = ({ responses, count }) => {
                                 fontSize: 13,
                                 color: "var(--color-accent)",
                                 fontFamily: "inherit",
-                                fontWeight: 600,
+                                fontWeight: 500,
+                                transition: "color 0.15s",
                                 padding: 0,
                             }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent-hover)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
                         >
                             ردّ
                         </button>

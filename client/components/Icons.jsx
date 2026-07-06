@@ -3,7 +3,7 @@ const Ico = ({
     size = 20,
     stroke = "currentColor",
     fill = "none",
-    sw = 1.8,
+    sw = 1.5,
     ...rest
 }) => (
     <svg
@@ -209,14 +209,14 @@ export const IcoGoogle = () => (
     </svg>
 );
 
-export const IcoEye = ({ show }) => (
+export const IcoEye = ({ show, size = 16 }) => (
     <svg
-        width="17"
-        height="17"
+        width={size}
+        height={size}
         viewBox="0 0 24 24"
         fill="none"
         stroke="var(--color-mid)"
-        strokeWidth="1.8"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
     >
@@ -311,7 +311,7 @@ export const IcoSunSmall = (props) => (
         height={props.size ?? 16}
         fill="none"
         stroke={props.stroke ?? "currentColor"}
-        strokeWidth="2"
+        strokeWidth="1.5"
         strokeLinecap="round"
     >
         <circle cx="12" cy="12" r="4" />
@@ -326,7 +326,7 @@ export const IcoMoonSmall = (props) => (
         height={props.size ?? 16}
         fill="none"
         stroke={props.stroke ?? "currentColor"}
-        strokeWidth="2"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
     >
@@ -341,7 +341,7 @@ export const IcoSystemSmall = (props) => (
         height={props.size ?? 16}
         fill="none"
         stroke={props.stroke ?? "currentColor"}
-        strokeWidth="2"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
     >

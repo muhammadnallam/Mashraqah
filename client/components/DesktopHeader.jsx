@@ -72,7 +72,7 @@ const DesktopHeader = ({ isAuthenticated, onLogin, onToggleSidebar }) => {
                     background: "var(--color-bg)",
                     border: "1px solid var(--color-border)",
                     borderRadius: 99,
-                    padding: "9px 16px",
+                    padding: "8px 16px",
                     flex: 1,
                     maxWidth: 540,
                 }}
@@ -124,7 +124,7 @@ const DesktopHeader = ({ isAuthenticated, onLogin, onToggleSidebar }) => {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            strokeWidth="1.8"
+                            strokeWidth="1.5"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                         >

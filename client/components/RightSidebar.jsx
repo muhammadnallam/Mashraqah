@@ -25,12 +25,22 @@ const NAV_ITEMS = [
     },
 ];
 
-const RightSidebar = (isActive) => (
+const RightSidebar = ({ sidebarOpen, isActive } = {}) => (
+    <div
+        style={{
+            width: 240,
+            transform: sidebarOpen
+                ? "translateX(0)"
+                : "translateX(240px)",
+            transition: "transform 0.3s ease",
+            willChange: "transform",
+        }}
+    >
     <aside
         style={{
             display: isActive ? "flex" : "hidden",
             flexDirection: "column",
-            padding: "24px 18px",
+            padding: "24px 16px",
             height: "100%",
         }}
     >
@@ -44,12 +54,10 @@ const RightSidebar = (isActive) => (
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            gap: 14,
+                            gap: 12,
                             width: "100%",
-                            padding: "12px 14px",
-                            background: item.active
-                                ? "var(--color-accent-light)"
-                                : "none",
+                            padding: "12px 16px",
+                            background: "none",
                             border: "none",
                             cursor: "pointer",
                             color: item.active
@@ -58,21 +66,19 @@ const RightSidebar = (isActive) => (
                             fontSize: 15,
                             fontFamily: "inherit",
                             fontWeight: item.active ? 700 : 400,
-                            borderRadius: 6,
+                            borderRadius: 0,
                             marginBottom: 4,
                             textAlign: "right",
-                            transition: "background 0.15s, color 0.15s",
+                            transition: "color 0.15s",
                         }}
                         onMouseEnter={(e) => {
                             if (!item.active) {
-                                e.currentTarget.style.background = "#f5f5f5";
                                 e.currentTarget.style.color =
                                     "var(--color-ink)";
                             }
                         }}
                         onMouseLeave={(e) => {
                             if (!item.active) {
-                                e.currentTarget.style.background = "none";
                                 e.currentTarget.style.color =
                                     "var(--color-mid)";
                             }
@@ -94,23 +100,31 @@ const RightSidebar = (isActive) => (
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 12,
+                    gap: 8,
                     width: "100%",
-                    padding: "12px 14px",
+                    padding: "12px 16px",
                     background: "none",
                     border: "none",
                     cursor: "pointer",
                     color: "var(--color-mid)",
                     fontSize: 15,
                     fontFamily: "inherit",
-                    borderRadius: 6,
+                    borderRadius: 0,
+                    transition: "color 0.15s",
                 }}
+                onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--color-ink)")
+                }
+                onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--color-mid)")
+                }
             >
                 <IcoMoreV size={22} />
                 المزيد
             </button>
         </div>
     </aside>
+    </div>
 );
 
 export default RightSidebar;

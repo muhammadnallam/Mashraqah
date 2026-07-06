@@ -26,8 +26,8 @@ const Tabs = ({ active, setActive, tabList }) => (
                         background: "none",
                         border: "none",
                         cursor: "pointer",
-                        padding: "14px 20px",
-                        fontSize: 16,
+                        padding: "12px 20px",
+                        fontSize: 15,
                         fontFamily: "inherit",
                         whiteSpace: "nowrap",
                         flexShrink: 0,
@@ -43,6 +43,8 @@ const Tabs = ({ active, setActive, tabList }) => (
                         marginBottom: -1,
                         transition: "color 0.15s",
                     }}
+                    onMouseEnter={(e) => { if (active !== tab.id) e.currentTarget.style.color = "var(--color-ink)"; }}
+                    onMouseLeave={(e) => { if (active !== tab.id) e.currentTarget.style.color = "var(--color-mid)"; }}
                 >
                     {tab.label}
                 </button>

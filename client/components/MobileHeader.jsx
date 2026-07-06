@@ -16,7 +16,7 @@ const MobileHeader = ({ onLogin, isAuthenticated }) => {
             borderBottom: "1px solid var(--color-border)",
             display: "flex",
             alignItems: "center",
-            padding: "0 14px",
+            padding: "0 16px",
             height: 56,
             gap: 8,
         }}
@@ -27,14 +27,14 @@ const MobileHeader = ({ onLogin, isAuthenticated }) => {
                     fontFamily:
                         "var(--font-wordmark), 'Noto Serif Arabic', serif",
                     fontWeight: 700,
-                    fontSize: 22,
+                    fontSize: 19,
                     transform: "scaleX(1.1)",
                     color: "var(--color-ink)",
                     letterSpacing: -0.5,
                     flexShrink: 0,
                 }}
             >
-                مَشْرَقَة
+                إطناب
             </span>
         </a>
 
@@ -48,7 +48,10 @@ const MobileHeader = ({ onLogin, isAuthenticated }) => {
                 color: "var(--color-mid)",
                 display: "flex",
                 padding: 4,
+                transition: "color 0.15s",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
         >
             <IcoSearch size={22} />
         </button>
@@ -62,10 +65,13 @@ const MobileHeader = ({ onLogin, isAuthenticated }) => {
                 border: "none",
                 cursor: "pointer",
                 color: "var(--color-mid)",
-                fontSize: 14,
+                fontSize: 13,
                 fontFamily: "inherit",
-                padding: "4px 2px",
+                padding: "4px",
+                transition: "color 0.15s",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
         >
             <svg
                 width="20"
@@ -73,7 +79,7 @@ const MobileHeader = ({ onLogin, isAuthenticated }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="1.8"
+                strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             >
@@ -92,7 +98,10 @@ const MobileHeader = ({ onLogin, isAuthenticated }) => {
                 display: "flex",
                 position: "relative",
                 padding: 4,
+                transition: "color 0.15s",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ink)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
         >
             <IcoBell size={22} />
             <span

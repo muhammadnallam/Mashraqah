@@ -65,8 +65,8 @@ const ArticleCard = ({ article, isMobile }) => {
                         />
                         <span
                             style={{
-                                fontSize: 14,
-                                fontWeight: 600,
+                                fontSize: 15,
+                                fontWeight: 500,
                                 color: "var(--color-ink)",
                             }}
                         >
@@ -116,7 +116,7 @@ const ArticleCard = ({ article, isMobile }) => {
                             style={{
                                 fontFamily:
                                     "Georgia, 'Noto Serif Arabic', serif",
-                                fontSize: isMobile ? 20 : 24,
+                                fontSize: isMobile ? 19 : 24,
                                 fontWeight: 700,
                                 color: "var(--color-ink)",
                                 lineHeight: 1.3,
@@ -130,9 +130,9 @@ const ArticleCard = ({ article, isMobile }) => {
 
                     <p
                         style={{
-                            fontSize: 16,
+                            fontSize: 15,
                             color: "var(--color-mid)",
-                            lineHeight: 1.6,
+                            lineHeight: 1.8,
                             marginBottom: 16,
                             display: "-webkit-box",
                             WebkitLineClamp: 2,
@@ -156,7 +156,7 @@ const ArticleCard = ({ article, isMobile }) => {
                                 color: "var(--color-mid)",
                                 background: "var(--color-tag-bg)",
                                 borderRadius: 99,
-                                padding: "4px 11px",
+                                padding: "4px 12px",
                                 whiteSpace: "nowrap",
                                 flexShrink: 0,
                             }}
@@ -164,18 +164,21 @@ const ArticleCard = ({ article, isMobile }) => {
                             {article.readTime} دقائق
                         </span>
 
-                        {/* <button
+                        <button
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 5,
+                                gap: 8,
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
                                 color: "var(--color-mid)",
-                                fontSize: 14,
+                                fontSize: 13,
                                 padding: 0,
+                                transition: "color 0.15s",
                             }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                         >
                             <IcoClap size={16} />
                             <span>{article.claps}</span>
@@ -185,14 +188,17 @@ const ArticleCard = ({ article, isMobile }) => {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 4,
+                                gap: 8,
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
                                 color: "var(--color-mid)",
-                                fontSize: 14,
+                                fontSize: 13,
                                 padding: 0,
+                                transition: "color 0.15s",
                             }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                         >
                             <IcoComment size={16} />
                             <span>{article.comments}</span>
@@ -202,18 +208,21 @@ const ArticleCard = ({ article, isMobile }) => {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 4,
+                                gap: 8,
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
                                 color: "var(--color-mid)",
-                                fontSize: 14,
+                                fontSize: 13,
                                 padding: 0,
+                                transition: "color 0.15s",
                             }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                         >
                             <IcoShare size={16} />
                             <span>{article.reposts}</span>
-                        </button> */}
+                        </button>
 
                         <div style={{ flex: 1 }} />
 
@@ -226,6 +235,8 @@ const ArticleCard = ({ article, isMobile }) => {
                                 padding: 4,
                                 transition: "color 0.15s",
                             }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                         >
                             <IcoBookmark
                                 size={16}
@@ -239,7 +250,10 @@ const ArticleCard = ({ article, isMobile }) => {
                                 cursor: "pointer",
                                 color: "var(--color-mid)",
                                 padding: 4,
+                                transition: "color 0.15s",
                             }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-mid)")}
                         >
                             <IcoMoreH size={16} />
                         </button>
@@ -254,7 +268,7 @@ const ArticleCard = ({ article, isMobile }) => {
                             width: isMobile ? 100 : 140,
                             height: isMobile ? 100 : 140,
                             objectFit: "cover",
-                            borderRadius: 4,
+                            borderRadius: 0,
                             flexShrink: 0,
                         }}
                     />

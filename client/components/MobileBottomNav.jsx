@@ -44,10 +44,13 @@ const MobileBottomNav = () => {
                             color: item.active
                                 ? "var(--color-accent)"
                                 : "var(--color-mid)",
-                            fontSize: 10,
+                            fontSize: 13,
                             fontFamily: "inherit",
-                            gap: 3,
+                            gap: 4,
+                            transition: "color 0.15s",
                         }}
+                        onMouseEnter={(e) => { if (!item.active) e.currentTarget.style.color = "var(--color-ink)"; }}
+                        onMouseLeave={(e) => { if (!item.active) e.currentTarget.style.color = "var(--color-mid)"; }}
                     >
                         <Icon
                             size={22}

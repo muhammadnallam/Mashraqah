@@ -90,9 +90,9 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                     width: 260,
                     background: "var(--color-white)",
                     border: "1px solid var(--color-border)",
-                    borderRadius: 16,
-                    boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
+                    borderRadius: 0,
                     zIndex: 80,
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
                     padding: 8,
                     overflow: "hidden",
                 }}
@@ -103,8 +103,8 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 10,
-                                padding: "10px 10px 12px",
+                                gap: 8,
+                                padding: "8px 12px",
                             }}
                         >
                             <div
@@ -128,7 +128,7 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                                 <p
                                     style={{
                                         margin: 0,
-                                        fontSize: 14,
+                                        fontSize: 15,
                                         fontWeight: 500,
                                         color: "var(--color-ink)",
                                         whiteSpace: "nowrap",
@@ -142,7 +142,7 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                                     <p
                                         style={{
                                             margin: 0,
-                                            fontSize: 12,
+                                            fontSize: 13,
                                             color: "var(--color-mid)",
                                             whiteSpace: "nowrap",
                                             overflow: "hidden",
@@ -158,7 +158,7 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                             style={{
                                 height: 1,
                                 background: "var(--color-border)",
-                                margin: "2px 0 8px",
+                                margin: "4px 0 8px",
                             }}
                         />
                     </>
@@ -168,11 +168,12 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                     <button
                         onClick={handleLogin}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.background =
-                                "var(--color-accent-light)";
+                            e.currentTarget.style.color =
+                                "var(--color-accent)";
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.background = "none";
+                            e.currentTarget.style.color =
+                                "var(--color-ink)";
                         }}
                         style={menuItemStyle()}
                     >
@@ -188,11 +189,12 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                             key={item.label}
                             onClick={() => handleItemClick(item)}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.background =
-                                    "var(--color-accent-light)";
+                                e.currentTarget.style.color =
+                                    "var(--color-accent)";
                             }}
                             onMouseLeave={(e) => {
-                                e.currentTarget.style.background = "none";
+                                e.currentTarget.style.color =
+                                    "var(--color-ink)";
                             }}
                             style={menuItemStyle()}
                         >
@@ -208,15 +210,15 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                     style={{
                         height: 1,
                         background: "var(--color-border)",
-                        margin: "6px 0",
+                        margin: "8px 0",
                     }}
                 />
 
-                <div style={{ padding: "6px 10px 8px" }}>
+                <div style={{ padding: "8px 12px" }}>
                     <p
                         style={{
-                            margin: "0 0 6px",
-                            fontSize: 12,
+                            margin: "0 0 8px",
+                            fontSize: 13,
                             color: "var(--color-mid)",
                         }}
                     >
@@ -251,10 +253,10 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                                         gap: 4,
                                         border: "none",
                                         borderRadius: 999,
-                                        padding: "6px 0",
+                                        padding: "8px 0",
                                         cursor: "pointer",
                                         fontFamily: "inherit",
-                                        fontSize: 12,
+                                        fontSize: 13,
                                         fontWeight: 500,
                                         background: active
                                             ? "var(--color-accent)"
@@ -279,18 +281,11 @@ const UserDropdown = ({ open, onClose, onLogin }) => {
                             style={{
                                 height: 1,
                                 background: "var(--color-border)",
-                                margin: "6px 0",
+                                margin: "8px 0",
                             }}
                         />
                         <button
                             onClick={handleLogout}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.background =
-                                    "var(--color-accent-light)";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.background = "none";
-                            }}
                             style={{
                                 ...menuItemStyle(),
                                 color: "var(--color-error)",
@@ -312,18 +307,18 @@ function menuItemStyle() {
     return {
         display: "flex",
         alignItems: "center",
-        gap: 10,
+        gap: 8,
         width: "100%",
-        padding: "10px 10px",
+        padding: "8px 12px",
         border: "none",
         background: "none",
         cursor: "pointer",
         fontFamily: "inherit",
-        fontSize: 14,
+        fontSize: 13,
         color: "var(--color-ink)",
         textAlign: "right",
-        borderRadius: 10,
-        transition: "background 0.12s",
+        borderRadius: 0,
+        transition: "color 0.12s",
     };
 }
 
