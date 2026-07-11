@@ -361,6 +361,13 @@ export default function App() {
         { id: "latest", label: "أتابعهم" },
         { id: "trending", label: "الأحدث" },
     ];
+    
+    // TODO
+    // const tabList = [];
+
+    // for (let t of TAGS) {
+    //     tabList.push({ id: t, label: t });
+    // }
 
     const styles = {
         root: {
@@ -376,8 +383,8 @@ export default function App() {
                     ? "240px 1fr"
                     : "0px 1fr"
                 : sidebarOpen
-                  ? "240px 1fr 350px"
-                  : "0px 1fr 350px",
+                    ? "240px 1fr 350px"
+                    : "0px 1fr 350px",
             width: "100%",
             minHeight: `calc(100vh - ${HEADER_H}px)`,
             alignItems: "start",

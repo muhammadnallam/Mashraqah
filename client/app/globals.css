@@ -36,8 +36,8 @@
     --color-surface: #fdfcfa;
     --color-white: #fdfcfa;
     /* --color-bg: #f9f9f9; */
-    --color-bg: #F0EDE4;
-    --color-page-bg: #F0EDE4;
+    --color-bg: #f0ede4;
+    --color-page-bg: #f0ede4;
     --color-parchment: #f7f4ee;
     /* --color-ink: #1a1a1a; */
     --color-ink: #1a1714;
@@ -53,6 +53,7 @@
     --color-disabled-txt: #b9bac4;
     --color-surface-card: #fdfcfa;
 
+    --color-text-dusk: #4a4540;
     /* New Emerald Theme */
     /* --color-primary: #1a4d3a;
     --color-primary-deep: #1a4d3a;
@@ -63,7 +64,6 @@
     --color-surface-subtle: #ede8df;
     
     --color-ink: #1a1714;
-    --color-text-dusk: #4a4540;
     --color-text-ash: #8c8580;
     --color-text-white: #ffffff;
     --color-text-select: #e8f2ee;
@@ -97,8 +97,8 @@
         min-height: 100vh;
     }
     ::selection {
-        background-color: var(--color-accent);
-        color: white;
+        background-color: rgba(0, 71, 65, 0.2);
+        /* color: white; */
     }
 }
 
@@ -109,5 +109,22 @@
     }
     .hide-scroll::-webkit-scrollbar {
         display: none;
+    }
+    ::-webkit-scrollbar {
+        width: 0.25rem;
+    }
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(37, 39, 45, 0.3) transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(37, 39, 45, 0.3);
+        border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
     }
 }

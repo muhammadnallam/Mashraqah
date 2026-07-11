@@ -98,7 +98,10 @@ const DesktopHeader = ({ onLogin, onToggleSidebar }) => {
 
             <div style={{ display: "flex", gap: 16 }}>
                 {user && (
-                    <button onClick={() => {router.push("/editor")}}
+                    <button
+                        onClick={() => {
+                            router.push("/editor");
+                        }}
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -125,14 +128,9 @@ const DesktopHeader = ({ onLogin, onToggleSidebar }) => {
 
                 <button
                     style={{
-                        background: "none",
-                        border: "none",
                         cursor: "pointer",
                         color: "var(--color-mid)",
-                        display: "flex",
-                        padding: 4,
                         transition: "color 0.15s",
-                        marginTop: 1,
                     }}
                     onMouseEnter={(e) =>
                         (e.currentTarget.style.color = "var(--color-ink)")

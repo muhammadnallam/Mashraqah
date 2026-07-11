@@ -47,32 +47,26 @@ export const metadata = {
 
 export default function RootLayout({ children, user }) {
     return (
-        <StrictMode>
-            {/* TODO: Remove in Production */}
-            <html dir="rtl" lang="ar" className={wordmarkFont.variable}>
-                <head>
-                    <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1.0"
-                    />
-                    <link
-                        rel="preconnect"
-                        href="https://fonts.googleapis.com"
-                    />
-                    <link
-                        rel="preconnect"
-                        href="https://fonts.gstatic.com"
-                        crossOrigin="anonymous"
-                    />
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Serif+Arabic:wght@400;700&display=swap"
-                        rel="stylesheet"
-                    />
-                </head>
-                <body>
-                    <UserProvider>{children}</UserProvider>
-                </body>
-            </html>
-        </StrictMode>
+        <html dir="rtl" lang="ar" className={wordmarkFont.variable}>
+            <head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Serif+Arabic:wght@400;700&display=swap"
+                    rel="stylesheet"
+                />
+            </head>
+            <body>
+                <UserProvider>{children}</UserProvider>
+            </body>
+        </html>
     );
 }

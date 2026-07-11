@@ -11,7 +11,7 @@ const MobileBottomNav = () => {
         { icon: House, label: "الرئيسية", active: true },
         { icon: Inbox, label: "الاشتراكات", active: false },
         { icon: Bookmark, label: "المكتبة", active: false },
-        { icon: UserRound, label: "الملف الشخصي", active: false },
+        { icon: UserRound, label: "أنت", active: false },
     ];
     return (
         <nav
