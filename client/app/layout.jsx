@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import "./globals.css";
 import localFont from "next/font/local";
 import UserProvider from "@/context/UserContext";
+import ScreenProvider from "@/context/ScreenContext";
 
 const nastaliqUrdu = localFont({
     src: [
@@ -65,7 +66,9 @@ export default function RootLayout({ children, user }) {
                 />
             </head>
             <body>
-                <UserProvider>{children}</UserProvider>
+                <ScreenProvider>
+                    <UserProvider>{children}</UserProvider>
+                </ScreenProvider>
             </body>
         </html>
     );

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 // Not give the user access until its authentication state is fetched
 export const UserContext = createContext(null);
@@ -25,7 +25,3 @@ export default function UserProvider({ children }) {
 
     return <UserContext.Provider value={{user, setUser}}>{children}</UserContext.Provider>;
 }
-
-// export function useUser() {
-//     return useContext(UserContext);
-// }

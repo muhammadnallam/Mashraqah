@@ -12,6 +12,7 @@ import Avatar from "@/components/Avatar";
 import Tabs from "@/components/Tabs";
 import AuthModal from "@/components/AuthModal";
 import { UserContext } from "@/context/UserContext";
+import { WidthContext } from "@/context/ScreenContext";
 
 const LeftPanel = ({ onLogin, onSignUp }) => {
     const [subs, setSubs] = useState(WRITERS.map((w) => w.sub));
@@ -326,25 +327,11 @@ const LeftPanel = ({ onLogin, onSignUp }) => {
     }
 };
 
-const GlobalStyle = () => (
-    <style>{`
-        .hide-scroll::-webkit-scrollbar { display: none; }
-    `}</style>
-);
-
 export default function App() {
     const [tab, setTab] = useState("foryou");
     const [modal, setModal] = useState(null); // null | "signin" | "signup"
     const [sidebarOpen, setSidebarOpen] = useState(true);
-    
-    const [width, setWidth] = useState(1200);
-
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener("resize", handleResize, { passive: true });
-        handleResize();
-        return () => window.removeEventListener("resize", handleResize);
-    }, []); // empty deps = runs once on mount, cleans up on unmount
+    const width = useContext(WidthContext);
 
     const isMobile = width < 768;
     const isTablet = width >= 768 && width < 1100;
@@ -361,13 +348,6 @@ export default function App() {
         { id: "latest", label: "أتابعهم" },
         { id: "trending", label: "الأحدث" },
     ];
-    
-    // TODO
-    // const tabList = [];
-
-    // for (let t of TAGS) {
-    //     tabList.push({ id: t, label: t });
-    // }
 
     const styles = {
         root: {
@@ -449,7 +429,7 @@ export default function App() {
                 />
                 <div style={styles.desktopGrid}>
                     <div style={styles.rightSidebarWrap}>
-                        <RightSidebar sidebarOpen={sidebarOpen} />
+                        <RightSidebar isOpen={sidebarOpen} />
                     </div>
                     <main style={styles.centerWrap}>
                         <div style={styles.centerInner}>
@@ -481,14 +461,13 @@ export default function App() {
         // Desktop
         return (
             <div style={styles.root}>
-                <GlobalStyle />
                 <DesktopHeader
                     onLogin={openLogin}
                     onToggleSidebar={toggleSidebar}
                 />
                 <div style={styles.desktopGrid}>
                     <div style={styles.rightSidebarWrap}>
-                        <RightSidebar sidebarOpen={sidebarOpen} />
+                        <RightSidebar isOpen={sidebarOpen} />
                     </div>
                     <main style={styles.centerWrap}>
                         <div style={styles.centerInner}>
