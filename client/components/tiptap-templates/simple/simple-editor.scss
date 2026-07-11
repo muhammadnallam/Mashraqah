@@ -67,24 +67,29 @@ body,
     background-color: var(--color-bg);
 }
 
-.simple-editor-content {
+.simple-editor-scroll {
     height: 100%;
-    max-width: 740px;
-    width: 100%;
-    margin: 0 auto;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
+    direction: ltr;
 }
 
-.simple-editor-content .tiptap.ProseMirror.simple-editor {
+.simple-editor-content {
+    max-width: 740px;
+    width: 100%;
+    margin: 0 auto;
+    direction: rtl;
+}
+
+.simple-editor-scroll .tiptap.ProseMirror.simple-editor {
     padding: 3rem 3rem 30vh;
     // border: 3px solid black;
 }
 
 @media screen and (max-width: 480px) {
-    .simple-editor-content .tiptap.ProseMirror.simple-editor {
+    .simple-editor-scroll .tiptap.ProseMirror.simple-editor {
         padding: 1rem 1.5rem 30vh;
     }
 }

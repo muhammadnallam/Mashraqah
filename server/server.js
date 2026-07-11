@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRouter = require("./routes/auth");
+const articleRouter = require("./routes/article");
 require("dotenv").config();
 
 const app = express();
@@ -30,9 +31,11 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/auth", authRouter);
 
+app.use("/api/article", articleRouter);
+
 app.post("/api/content", (req, res) => {
     console.log(req.body);
-})
+});
 
 app.listen(PORT, (e) => {
     console.log(`Server is running on http://localhost:${PORT}`);

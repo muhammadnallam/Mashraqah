@@ -1,9 +1,7 @@
-import { ArrowLeft, Settings } from "lucide-react";
-import { useCurrentEditor } from "@tiptap/react";
+import { ArrowLeft, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export default function EditorHeader({setPublishModal, setSettingsModal}) {
-    const { editor } = useCurrentEditor();
+export default function EditorHeader({setPublishModal, setConfirmModal}) {
     const router = useRouter();
 
     return (
@@ -60,14 +58,14 @@ export default function EditorHeader({setPublishModal, setSettingsModal}) {
                             transition: "color 0.15s",
                         }}
                         onMouseEnter={(e) =>
-                            (e.currentTarget.style.color = "var(--color-ink)")
+                            (e.currentTarget.style.color = "var(--color-error)")
                         }
                         onMouseLeave={(e) =>
                             (e.currentTarget.style.color = "var(--color-mid)")
                         }
-                        onClick={() => {setSettingsModal(true)}}
+                        onClick={() => {setConfirmModal(true)}}
                     >
-                        <Settings size={20} />
+                        <Trash size={20} />
                     </button>
                 </div>
                 <button

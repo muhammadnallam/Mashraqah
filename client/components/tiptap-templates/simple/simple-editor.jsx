@@ -1,8 +1,9 @@
 "use client";
 
 // --- My Components
-import EditorHeader from "@/components/Editor/EditorHeader";
-import { PublishModal, SettingsModal } from "@/components/Editor/EditorModals";
+import EditorHeader from "@/components/editor/EditorHeader";
+import PublishModal from "@/components/editor/PublishModal";
+import ConfirmModal from "@/components/ConfirmModal";
 
 import { useEffect, useRef, useState } from "react";
 import { EditorContent, EditorContext, useEditor } from "@tiptap/react";
@@ -76,6 +77,7 @@ import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 
 // --- Styles ---
 import "@/components/tiptap-templates/simple/simple-editor.scss";
+import { Trash } from "lucide-react";
 
 const MainToolbarContent = ({ onHighlighterClick, onLinkClick, isMobile }) => {
     return (
@@ -157,8 +159,8 @@ export function SimpleEditor() {
     const { height } = useWindowSize();
     const [mobileView, setMobileView] = useState("main");
     const toolbarRef = useRef(null);
-    const [ publishModal, setPublishModal ] = useState(false);
-    const [ settingsModal, setSettingsModal ] = useState(false);
+    const [publishModal, setPublishModal] = useState(false);
+    const [confirmModal, setConfirmModal] = useState(false);
     const [coverImage, setCoverImage] = useState(null);
     const [coverError, setCoverError] = useState("");
 
@@ -266,12 +268,31 @@ export function SimpleEditor() {
     return (
         <div className="simple-editor-wrapper">
             <EditorContext.Provider value={{ editor }}>
-                <EditorHeader setPublishModal={setPublishModal} setSettingsModal={setSettingsModal}/>
-                <PublishModal isOpen={publishModal} onClose={() => {setPublishModal(false)}}
-                    coverImage={coverImage} setCoverImage={setCoverImage}
-                    coverError={coverError} setCoverError={setCoverError}
+                <EditorHeader
+                    setPublishModal={setPublishModal}
+                    setConfirmModal={setConfirmModal}
                 />
-                <SettingsModal isOpen={settingsModal} onClose={() => {setSettingsModal(false)}}/>
+                <PublishModal
+                    isOpen={publishModal}
+                    onClose={() => {
+                        setPublishModal(false);
+                    }}
+                    coverImage={coverImage}
+                    setCoverImage={setCoverImage}
+                    coverError={coverError}
+                    setCoverError={setCoverError}
+                    content={editor && editor.getJSON()}
+                />
+                <ConfirmModal
+                    isOpen={confirmModal}
+                    icon={Trash}
+                    color={"var(--color-error)"}
+                    icoBackground={"#F5D5D8"}
+                    title={"هل تريد حذف هذا المقال؟"}
+                    description={"سيتم حذف هذا المقال ولن تستطيع إسترجاعه."}
+                    buttonText={"حذف"}
+                    onCancel={() => setConfirmModal(false)}
+                />
                 <Toolbar
                     ref={toolbarRef}
                     // style={{
@@ -302,78 +323,76 @@ export function SimpleEditor() {
                     )}
                 </Toolbar>
 
-                <div className="simple-editor-content">
-                    {coverImage && (
-                        <div
+                <div className="simple-editor-scroll">
+                    <div className="simple-editor-content">
+                        {coverImage && (
+                            <div
+                                style={{
+                                    padding: "3rem 3rem 24px",
+                                    maxWidth: "100%",
+                                    boxSizing: "border-box",
+                                }}
+                            >
+                                <img
+                                    src={URL.createObjectURL(coverImage)}
+                                    alt=""
+                                    style={{
+                                        width: "100%",
+                                        aspectRatio: "191/100",
+                                        objectFit: "cover",
+                                        borderRadius: 8,
+                                    }}
+                                />
+                            </div>
+                        )}
+                        <label
                             style={{
-                                padding: "3rem 3rem 24px",
-                                maxWidth: "100%",
-                                boxSizing: "border-box",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                gap: 8,
+                                padding: "12px 3rem",
+                                cursor: "pointer",
+                                fontSize: 13,
+                                color: "var(--color-mid)",
+                                borderBottom: "1px solid var(--color-border)",
+                                margin: "0 3rem 0",
+                                transition: "color 0.15s, border-color 0.15s",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.color =
+                                    "var(--color-accent)";
+                                e.currentTarget.style.borderColor =
+                                    "var(--color-accent)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.color =
+                                    "var(--color-mid)";
+                                e.currentTarget.style.borderColor =
+                                    "var(--color-border)";
                             }}
                         >
-                            <img
-                                src={URL.createObjectURL(coverImage)}
-                                alt=""
-                                style={{
-                                    width: "100%",
-                                    aspectRatio: "191/100",
-                                    objectFit: "cover",
-                                    borderRadius: 8,
+                            <input
+                                type="file"
+                                accept="image/*"
+                                hidden
+                                onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (!file) return;
+                                    if (file.size > 3 * 1024 * 1024) {
+                                        setCoverError("الحد الأقصى 3 ميغابايت");
+                                        return;
+                                    }
+                                    setCoverError("");
+                                    setCoverImage(file);
                                 }}
                             />
-                        </div>
-                    )}
-                    <label
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 8,
-                            padding: "12px 3rem",
-                            cursor: "pointer",
-                            fontSize: 13,
-                            color: "var(--color-mid)",
-                            borderBottom: "1px solid var(--color-border)",
-                            margin: "0 3rem 0",
-                            transition: "color 0.15s, border-color 0.15s",
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.color =
-                                "var(--color-accent)";
-                            e.currentTarget.style.borderColor =
-                                "var(--color-accent)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.color = "var(--color-mid)";
-                            e.currentTarget.style.borderColor =
-                                "var(--color-border)";
-                        }}
-                    >
-                        <input
-                            type="file"
-                            accept="image/*"
-                            hidden
-                            onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (!file) return;
-                                if (file.size > 3 * 1024 * 1024) {
-                                    setCoverError(
-                                        "الحد الأقصى 3 ميغابايت",
-                                    );
-                                    return;
-                                }
-                                setCoverError("");
-                                setCoverImage(file);
-                            }}
-                        />
-                        {coverImage
-                            ? "تغيير صورة الغلاف"
-                            : "إضافة صورة غلاف"}
-                    </label>
-                    <EditorContent
-                        editor={editor}
-                        role="presentation"
-                    />
+                            {coverImage
+                                ? "تغيير صورة الغلاف"
+                                : "إضافة صورة غلاف"}
+                        </label>
+                        <EditorContent editor={editor} role="presentation" />
+                    </div>
                 </div>
             </EditorContext.Provider>
         </div>
