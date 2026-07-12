@@ -56,6 +56,25 @@ const schema = getSchema(extensions);
 function validateDoc(json) {
     const doc = PMNode.fromJSON(schema, json);
     doc.check();
+
+    const first = doc.firstChild;
+    if (
+        !first ||
+        first.type.name !== "articleTitle" ||
+        !first.textContent.trim()
+    ) {
+        throw new Error("Article title cannot be empty");
+    }
+
+    const second = doc.child(1);
+    if (
+        !second ||
+        second.type.name !== "articleDescription" ||
+        !second.textContent.trim()
+    ) {
+        throw new Error("Article description cannot be empty");
+    }
+
     return doc;
 }
 

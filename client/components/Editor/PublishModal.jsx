@@ -156,6 +156,30 @@ const handlePublishSubmit = async (data) => {
 
     if (!data.coverImage) errors.coverImage = "صورة الغلاف مطلوبة";
 
+    const content = data.content;
+    const firstNode = content?.content?.[0];
+    const secondNode = content?.content?.[1];
+
+    const getText = (node) =>
+        node?.content
+            ?.map((c) => (c.type === "text" ? c.text : ""))
+            .join("")
+            .trim() || "";
+
+    if (!firstNode || firstNode.type !== "articleTitle" || !getText(firstNode)) {
+        errors.articleTitle = "عنوان المقال مطلوب";
+        alert(errors.articleTitle);
+    }
+
+    if (
+        !secondNode ||
+        secondNode.type !== "articleDescription" ||
+        !getText(secondNode)
+    ) {
+        errors.articleDescription = "وصف المقال مطلوب";
+        alert(errors.articleDescription);
+    }
+
     if (!data.seoTitle) errors.seoTitle = "عنوان SEO مطلوب";
     else if (data.seoTitle.length > 60)
         errors.seoTitle = "عنوان SEO يجب ألا يتجاوز 60 حرفًا";
