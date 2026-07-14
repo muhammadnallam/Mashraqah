@@ -27,6 +27,7 @@
         "dotenv": "^17.4.2",
         "express": "^5.2.1",
         "jsonwebtoken": "^9.0.3",
+        "nanoid": "^5.1.16",
         "prosemirror-model": "^1.25.11",
         "unique-username-generator": "^1.5.1",
         "zod": "^4.4.3"

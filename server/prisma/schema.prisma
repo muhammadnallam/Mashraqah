@@ -2,6 +2,7 @@ generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
 }
+
 datasource db {
   provider = "postgresql"
 }
@@ -34,8 +35,7 @@ model Article {
   title        String
   subtitle     String?
   content      Json
-  coverImage   String?
-  published    Boolean  @default(false)
+  coverImage   String
   searchVector String?
   score        Float    @default(0)
   createdAt    DateTime @default(now())
@@ -48,7 +48,7 @@ model Article {
   likes     Like[]
   bookmarks Bookmark[]
   shares    Share[]
-  views     View[]   @relation("articleViews")
+  views     View[]       @relation("articleViews")
 }
 
 model Tag {
