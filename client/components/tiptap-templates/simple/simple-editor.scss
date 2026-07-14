@@ -29,10 +29,6 @@ body,
 #root,
 #app {
     height: 100%;
-    /* Was --tt-bg-color while the wrapper below used --color-bg. If the
-       two variables ever resolve differently (or one is undefined), the
-       sliver of html/body revealed by the mobile 100vh bug shows up as a
-       mismatched (often white) strip instead of the editor background. */
     background-color: var(--color-bg);
 }
 

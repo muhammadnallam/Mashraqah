@@ -2,7 +2,6 @@ import {
     House,
     Inbox,
     Bookmark,
-    ChartColumn,
     UserRound,
 } from "lucide-react";
 
