@@ -10,6 +10,7 @@ import Tabs from "@/components/Tabs";
 import AuthModal from "@/components/AuthModal";
 import { UserContext } from "@/context/UserContext";
 import { WidthContext } from "@/context/ScreenContext";
+import Button from "@/components/Button";
 
 const LeftPanel = ({ onLogin, onSignUp }) => {
     const [subs, setSubs] = useState(WRITERS.map((w) => w.sub));
@@ -29,7 +30,6 @@ const LeftPanel = ({ onLogin, onSignUp }) => {
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    
                 }}
             >
                 <div
@@ -69,7 +69,6 @@ const LeftPanel = ({ onLogin, onSignUp }) => {
                         style={{
                             fontSize: 17,
                             fontWeight: 700,
-                            // color: "var(--color-white)",
                             marginBottom: 8,
                             lineHeight: 1.3,
                         }}
@@ -86,56 +85,20 @@ const LeftPanel = ({ onLogin, onSignUp }) => {
                     >
                         انضم إلى أكثر النقاشات إثارةً وعمقاً.
                     </p>
-                    <button
+                    <Button
                         onClick={onLogin}
-                        style={{
-                            display: "block",
-                            width: "100%",
-                            background: "var(--color-accent)",
-                            color: "var(--color-white)",
-                            border: "none",
-                            borderRadius: 6,
-                            padding: "12px 16px",
-                            fontSize: 15,
-                            fontWeight: 700,
-                            cursor: "pointer",
-                            marginBottom: 12,
-                            transition: "filter 0.15s",
-                        }}
-                        onMouseEnter={(e) =>
-                            (e.currentTarget.style.filter = "brightness(1.15)")
-                        }
-                        onMouseLeave={(e) =>
-                            (e.currentTarget.style.filter = "brightness(1)")
-                        }
+                        type="primary"
+                        style={{ width: "100%", marginBottom: 12 }}
                     >
                         تسجيل الدخول
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         onClick={onSignUp}
-                        style={{
-                            display: "block",
-                            width: "100%",
-                            background: "var(--color-dark-surface)",
-                            color: "var(--color-white)",
-                            border: "none",
-                            borderRadius: 6,
-                            padding: "12px 16px",
-                            fontSize: 15,
-                            fontWeight: 700,
-                            cursor: "pointer",
-                            transition: "background 0.15s",
-                        }}
-                        onMouseEnter={(e) =>
-                            (e.currentTarget.style.background = "#3a3a3a")
-                        }
-                        onMouseLeave={(e) =>
-                            (e.currentTarget.style.background =
-                                "var(--color-dark-surface)")
-                        }
+                        variant="dark"
+                        style={{ width: "100%" }}
                     >
                         انضم إلينا
-                    </button>
+                    </Button>
                 </div>
             </div>
         );
@@ -311,7 +274,7 @@ export default function App() {
 
     const isMobile = width < 768;
 
-    const openLogin = () => setModal("signin");
+    const openLogin = () => setModal("login");
     const openSignUp = () => setModal("signup");
     const closeModal = () => setModal(null);
     const toggleSidebar = () => setSidebarOpen((v) => !v);
@@ -325,7 +288,9 @@ export default function App() {
     return (
         <>
             <AppLayout
-                leftPanel={<LeftPanel onLogin={openLogin} onSignUp={openSignUp} />}
+                leftPanel={
+                    <LeftPanel onLogin={openLogin} onSignUp={openSignUp} />
+                }
                 sidebarOpen={sidebarOpen}
                 onToggleSidebar={toggleSidebar}
                 onLogin={openLogin}

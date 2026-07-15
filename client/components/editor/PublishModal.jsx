@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { TAGS } from "@/components/constants";
 import { useRouter } from "next/navigation";
+import Button from "@/components/Button";
 
 function InputField({ label, error, children }) {
     return (
@@ -266,55 +267,8 @@ export default function PublishModal({
             title="نشر"
             footer={
                 <>
-                    <button
-                        type="submit"
-                        style={{
-                            padding: "10px 18px",
-                            borderRadius: 8,
-                            fontSize: 14,
-                            fontWeight: 600,
-                            cursor: loading ? "wait" : "pointer",
-                            border: "none",
-                            background: "var(--color-accent)",
-                            color: "var(--color-white)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 8,
-                        }}
-                        disabled={loading}
-                    >
-                        {loading ? (
-                            <span
-                                style={{
-                                    display: "inline-block",
-                                    width: 18,
-                                    height: 18,
-                                    border: "2px solid currentColor",
-                                    borderTopColor: "transparent",
-                                    borderRadius: "50%",
-                                    animation: "spin 0.6s linear infinite",
-                                }}
-                            />
-                        ) : (
-                            "نشر المقال"
-                        )}
-                    </button>
-                    <button
-                        style={{
-                            padding: "10px 18px",
-                            borderRadius: 8,
-                            fontSize: 14,
-                            fontWeight: 600,
-                            cursor: "pointer",
-                            border: "none",
-                            background: "var(--color-bg)",
-                            color: "var(--color-ink)",
-                        }}
-                        onClick={onClose}
-                    >
-                        إلغاء
-                    </button>
+                    <Button loading={loading} type="submit">نشر المقال</Button>
+                    <Button onClick={onClose} variant="secondary">إلغاء</Button>
                 </>
             }
             onSubmit={async (e) => {

@@ -1,5 +1,6 @@
 import { ArrowLeft, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Button from "@/components/Button";
 
 export default function EditorHeader({setPublishModal, setConfirmModal}) {
     const router = useRouter();
@@ -20,30 +21,15 @@ export default function EditorHeader({setPublishModal, setConfirmModal}) {
                 }}
             >
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <button
-                        style={{
-                            padding: "8px 20px",
-                            borderRadius: 6,
-                            border: "none",
-                            background: "var(--color-accent)",
-                            color: "var(--color-white)",
-                            cursor: "pointer",
-                            fontSize: 15,
-                            fontWeight: 500,
-                            transition: "background-color 0.15s",
+                    <Button
+                        onClick={() => {
+                            setPublishModal(true);
                         }}
-                        onMouseEnter={(e) =>
-                            (e.currentTarget.style.backgroundColor =
-                                "var(--color-accent-hover)")
-                        }
-                        onMouseLeave={(e) =>
-                            (e.currentTarget.style.backgroundColor =
-                                "var(--color-accent)")
-                        }
-                        onClick={() => {setPublishModal(true)}}
+                        type="primary"
+                        style={{padding: "8px 20px"}}
                     >
                         التالي
-                    </button>
+                    </Button>
                     <button
                         style={{
                             display: "flex",
