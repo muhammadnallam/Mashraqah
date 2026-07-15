@@ -1,11 +1,12 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
 }
+
 
 // UUID is chosen over CUID2 to leverage the native support and database optimization.
 // Additionally, the platform manages articles URLs with slugs not with IDs (CUID2's main benefit).
@@ -13,7 +14,8 @@ model User {
   id          String   @id @default(uuid()) @db.Uuid
   email       String   @unique
   username    String   @unique
-  name        String   @default("مجهول")
+  firstName   String?  @default("مجهول")
+  lastName    String?
   bio         String?
   avatarUrl   String?
   password    String
@@ -33,7 +35,7 @@ model Article {
   id           String   @id @default(uuid()) @db.Uuid
   slug         String   @unique
   title        String
-  subtitle     String?
+  subtitle     String
   content      Json
   coverImage   String
   searchVector String?

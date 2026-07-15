@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { PrismaPg } = require("@prisma/adapter-pg"); // Prisma ORM's adapter for the use of node-postgres (pg)
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient } = require("../lib/generated/prisma/client");
 
 const connectionString = `${process.env.DATABASE_URL}`;
 

@@ -76,8 +76,8 @@ const register = async (email, password) => {
         return result;
     }
 
-    const data = await user.findByEmail(email);
-    if (data) {
+    const user = await user.findByEmail(email);
+    if (user) {
         return { success: false, error: "الحساب موجود بالفعل" };
     }
 
