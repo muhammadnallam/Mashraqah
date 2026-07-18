@@ -99,7 +99,7 @@ export default function AppLayout({
                     <main style={styles.centerWrap}>
                         <div style={styles.centerInner}>{children}</div>
                     </main>
-                    {leftPanel && (
+                    {leftPanel && !isTablet && (
                         <div
                             style={styles.leftPanelWrap}
                             className="hide-scroll"
