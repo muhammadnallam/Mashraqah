@@ -167,7 +167,11 @@ const handlePublishSubmit = async (data) => {
             .join("")
             .trim() || "";
 
-    if (!firstNode || firstNode.type !== "articleTitle" || !getText(firstNode)) {
+    if (
+        !firstNode ||
+        firstNode.type !== "articleTitle" ||
+        !getText(firstNode)
+    ) {
         errors.articleTitle = "عنوان المقال مطلوب";
         alert(errors.articleTitle);
     }
@@ -181,15 +185,23 @@ const handlePublishSubmit = async (data) => {
         alert(errors.articleDescription);
     }
 
-    if (!data.seoTitle) errors.seoTitle = "عنوان SEO مطلوب";
-    else if (data.seoTitle.length > 60)
-        errors.seoTitle = "عنوان SEO يجب ألا يتجاوز 60 حرفًا";
+    if (!data.seoTitle) errors.seoTitle = "عنوان محركات البحث مطلوب";
+    else if (data.seoTitle.length > 60 || data.seoTitle.length < 30)
+        errors.seoTitle = "العنوان يجب أن يكون بين 30 إلى 60 حرفًا";
 
     if (!data.seoDescription) errors.seoDescription = "وصف SEO مطلوب";
-    else if (data.seoDescription.length >= 160)
-        errors.seoDescription = "وصف SEO يجب أن يكون أقل من 160 حرفًا";
+    else if (
+        data.seoDescription.length > 160 ||
+        data.seoDescription.length < 100
+    )
+        errors.seoDescription = "الوصف يجب أن يكون بين 100 إلى 160 حرفًا";
 
     if (!data.tag) errors.tag = "الموضوع مطلوب";
+
+    if (data.wordCount < 500) {
+        errors.wordCount = "يجب أن يحتوي المقال على 500 كلمة على الأقل";
+        alert(errors.wordCount);
+    }
 
     if (Object.keys(errors).length > 0) return { success: false, errors };
 
@@ -202,7 +214,10 @@ const handlePublishSubmit = async (data) => {
         });
         const json = await res.json();
         if (res.status !== 200) {
-            return { success: false, errors: { apiError: json.error || "حدث خطأ أثناء نشر المقال" } };
+            return {
+                success: false,
+                errors: { apiError: json.error || "حدث خطأ أثناء نشر المقال" },
+            };
         }
         return { success: true, slug: json.slug };
     } catch {
@@ -218,6 +233,7 @@ export default function PublishModal({
     coverError,
     setCoverError,
     content,
+    wordCount,
 }) {
     const [seoTitle, setSeoTitle] = useState("");
     const [seoTitleError, setSeoTitleError] = useState("");
@@ -225,7 +241,7 @@ export default function PublishModal({
     const [seoDescriptionError, setSeoDescriptionError] = useState("");
     const [tag, setTag] = useState("");
     const [tagError, setTagError] = useState("");
-    const [sendEmail, setSendEmail] = useState(true);
+    const [sendEmail, setSendEmail] = useState(false);
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
@@ -267,8 +283,12 @@ export default function PublishModal({
             title="نشر"
             footer={
                 <>
-                    <Button loading={loading} type="submit">نشر المقال</Button>
-                    <Button onClick={onClose} variant="secondary">إلغاء</Button>
+                    <Button loading={loading} type="submit">
+                        نشر المقال
+                    </Button>
+                    <Button onClick={onClose} variant="secondary">
+                        إلغاء
+                    </Button>
                 </>
             }
             onSubmit={async (e) => {
@@ -285,6 +305,7 @@ export default function PublishModal({
                     tag,
                     sendEmail,
                     content,
+                    wordCount,
                 });
                 setLoading(false);
                 if (!result.success) {
@@ -295,8 +316,7 @@ export default function PublishModal({
                     if (result.errors.seoDescription)
                         setSeoDescriptionError(result.errors.seoDescription);
                     if (result.errors.tag) setTagError(result.errors.tag);
-                    if (result.errors.apiError)
-                        alert(result.errors.apiError);
+                    if (result.errors.apiError) alert(result.errors.apiError);
                     return;
                 }
                 router.push(`/article/${result.slug}`);
@@ -335,7 +355,7 @@ export default function PublishModal({
                 </label>
             </InputField>
 
-            <InputField label="عنوان SEO" error={seoTitleError}>
+            <InputField label="عنوان محركات البحث" error={seoTitleError}>
                 <input
                     name="title"
                     type="text"
@@ -351,7 +371,7 @@ export default function PublishModal({
                 />
             </InputField>
 
-            <InputField label="وصف SEO" error={seoDescriptionError}>
+            <InputField label="وصف محركات البحث" error={seoDescriptionError}>
                 <textarea
                     name="description"
                     style={{

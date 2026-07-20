@@ -16,6 +16,7 @@ import { TextAlign } from "@tiptap/extension-text-align";
 import { Typography } from "@tiptap/extension-typography";
 import { Highlight } from "@tiptap/extension-highlight";
 import { Placeholder, Selection } from "@tiptap/extensions";
+import { CharacterCount } from "@tiptap/extensions";
 
 // --- UI Primitives ---
 import { Button } from "@/components/tiptap-ui-primitive/button";
@@ -69,7 +70,6 @@ import { LinkIcon } from "@/components/tiptap-icons/link-icon";
 
 // --- Hooks ---
 import { useIsBreakpoint } from "@/hooks/use-is-breakpoint";
-import { useWindowSize } from "@/hooks/use-window-size";
 import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
 
 // --- Lib ---
@@ -156,13 +156,13 @@ const MobileToolbarContent = ({ type, onBack }) => (
 
 export function SimpleEditor() {
     const isMobile = useIsBreakpoint();
-    const { height } = useWindowSize();
     const [mobileView, setMobileView] = useState("main");
     const toolbarRef = useRef(null);
     const [publishModal, setPublishModal] = useState(false);
     const [confirmModal, setConfirmModal] = useState(false);
     const [coverImage, setCoverImage] = useState(null);
     const [coverError, setCoverError] = useState("");
+    const [stats, setStats] = useState({ words: 0 });
 
     const editor = useEditor({
         immediatelyRender: false,
@@ -218,6 +218,7 @@ export function SimpleEditor() {
                 upload: handleImageUpload,
                 onError: (error) => console.error("Upload failed:", error),
             }),
+            CharacterCount,
         ],
         content: (() => {
             if (typeof window !== "undefined") {
@@ -247,6 +248,9 @@ export function SimpleEditor() {
             };
         })(),
         onUpdate: ({ editor }) => {
+            setStats({
+                words: editor.storage.characterCount.words(),
+            });
             window.localStorage.setItem(
                 "editor-content",
                 JSON.stringify(editor.getJSON()),
@@ -265,12 +269,21 @@ export function SimpleEditor() {
         }
     }, [isMobile, mobileView]);
 
+    useEffect(() => {
+        if (editor) {
+            setStats({
+                words: editor.storage.characterCount.words(),
+            });
+        }
+    }, [editor]);
+
     return (
         <div className="simple-editor-wrapper">
             <EditorContext.Provider value={{ editor }}>
                 <EditorHeader
                     setPublishModal={setPublishModal}
                     setConfirmModal={setConfirmModal}
+                    wordCount={stats.words}
                 />
                 <PublishModal
                     isOpen={publishModal}
@@ -282,6 +295,7 @@ export function SimpleEditor() {
                     coverError={coverError}
                     setCoverError={setCoverError}
                     content={editor && editor.getJSON()}
+                    wordCount={stats.words}
                 />
                 <ConfirmModal
                     isOpen={confirmModal}

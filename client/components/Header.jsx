@@ -117,13 +117,12 @@ export default function Header({ onLogin, onToggleSidebar, isMobile }) {
                 />
             </div>}
 
-            {/* <div style={{ flex: 1 }} /> */}
 
             <div style={{ display: "flex", gap: 16 }}>
                 {user && (
                     <button
                         onClick={() => {
-                            router.push("/editor");
+                            router.push("/new");
                         }}
                         style={{
                             display: "flex",

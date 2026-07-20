@@ -20,12 +20,23 @@ const VALID_TAGS = [
 const articleSchema = z.object({
     content: z.record(z.unknown()),
     data: z.object({
-        seoTitle: z.string().min(1).max(60),
-        seoDescription: z.string().min(1).max(160),
+        seoTitle: z.string().min(30).max(60),
+        seoDescription: z.string().min(100).max(160),
         tag: z.enum(VALID_TAGS),
         sendEmail: z.boolean().optional(),
     }),
 });
+
+function countWords(doc) {
+    let count = 0;
+    function walk(node) {
+        if (node.content) node.content.forEach(walk);
+        if (node.type === "text" && node.text)
+            count += node.text.trim().split(/\s+/).filter(Boolean).length;
+    }
+    walk(doc);
+    return count;
+}
 
 function validateArticle(req, res, next) {
     const parsed = articleSchema.safeParse(req.body);
@@ -38,11 +49,13 @@ function validateArticle(req, res, next) {
 
     const { content, data } = parsed.data;
 
+    console.log(content);
+
     try {
         validateDoc(content);
     } catch (e) {
         console.log(e);
-        res.status(400).json({ error: "Invalid document structure" });
+        res.status(400).json({ error: "بُنية المستند غير صالحة" });
         return;
     }
 
@@ -51,6 +64,13 @@ function validateArticle(req, res, next) {
         sanitized = sanitizeDoc(content);
     } catch (err) {
         res.status(400).json({ error: err.message });
+        return;
+    }
+
+    if (countWords(sanitized) < 500) {
+        res.status(400).json({
+            error: "يجب أن يحتوي المقال على 500 كلمة على الأقل",
+        });
         return;
     }
 

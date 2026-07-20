@@ -63,7 +63,7 @@ function validateDoc(json) {
         first.type.name !== "articleTitle" ||
         !first.textContent.trim()
     ) {
-        throw new Error("Article title cannot be empty");
+        throw new Error("عنوان المقال لا يمكن أن يكون خاليًا");
     }
 
     const second = doc.child(1);
@@ -72,7 +72,7 @@ function validateDoc(json) {
         second.type.name !== "articleDescription" ||
         !second.textContent.trim()
     ) {
-        throw new Error("Article description cannot be empty");
+        throw new Error("وصف المقال لا يمكن أن يكون خاليًا");
     }
 
     return doc;
