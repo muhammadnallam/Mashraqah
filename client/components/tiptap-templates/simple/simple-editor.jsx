@@ -162,7 +162,7 @@ export function SimpleEditor() {
     const [confirmModal, setConfirmModal] = useState(false);
     const [coverImage, setCoverImage] = useState(null);
     const [coverError, setCoverError] = useState("");
-    const [stats, setStats] = useState({ words: 0 });
+    const [stats, setStats] = useState({ words: 0, characters: 0 });
 
     const editor = useEditor({
         immediatelyRender: false,

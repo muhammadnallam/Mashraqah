@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, Bookmark, Share } from "lucide-react";
+import { ArrowLeft, Bookmark, Download } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function ArticleHeader() {
@@ -75,7 +75,7 @@ export default function ArticleHeader() {
                         (e.currentTarget.style.color = "var(--color-mid)")
                     }
                 >
-                    <Share size={24} />
+                    <Download size={24} />
                 </button>
                 <button
                     aria-label="save article"

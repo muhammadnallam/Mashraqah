@@ -1,7 +1,21 @@
-import { upload, publishArticle, getSession, signInEmail, signUpEmail} from "./api";
+import {
+    upload,
+    publishArticle,
+    getSession,
+    signInEmail,
+    signUpEmail,
+} from "./api";
 import { processContentImages } from "./processImages";
 
-export async function handleArticle({ coverImage, content, seoTitle, seoDescription, tag, sendEmail, wordCount }) {
+export async function handleArticle({
+    coverImage,
+    content,
+    seoTitle,
+    seoDescription,
+    tag,
+    sendEmail,
+    wordCount,
+}) {
     const errors = {};
 
     if (!coverImage) errors.coverImage = "صورة الغلاف مطلوبة";
@@ -38,15 +52,12 @@ export async function handleArticle({ coverImage, content, seoTitle, seoDescript
         errors.seoTitle = "العنوان يجب أن يكون بين 30 إلى 60 حرفًا";
 
     if (!seoDescription) errors.seoDescription = "وصف SEO مطلوب";
-    else if (
-        seoDescription.length > 160 ||
-        seoDescription.length < 100
-    )
+    else if (seoDescription.length > 160 || seoDescription.length < 100)
         errors.seoDescription = "الوصف يجب أن يكون بين 100 إلى 160 حرفًا";
 
     if (!tag) errors.tag = "الموضوع مطلوب";
 
-    if (wordCount < 500) {
+    if (wordCount && wordCount < 500) {
         errors.wordCount = "يجب أن يحتوي المقال على 500 كلمة على الأقل";
         alert(errors.wordCount);
     }
@@ -54,15 +65,27 @@ export async function handleArticle({ coverImage, content, seoTitle, seoDescript
     if (Object.keys(errors).length > 0) return { success: false, errors };
 
     try {
-        const coverImageUrl = await upload(coverImage, "article-covers");
+        // const coverImageUrl = await upload(coverImage, "article-covers");
+        const coverImageUrl =
+            "https://substackcdn.com/image/fetch/$s_!SfSF!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F028f3639-bac3-4e5e-9426-12357f00808a_736x558.jpeg";
         const processedContent = await processContentImages(content);
         const json = await publishArticle({
             content: processedContent,
-            data: { seoTitle, seoDescription, tag, sendEmail, coverImage: coverImageUrl },
+            data: {
+                seoTitle,
+                seoDescription,
+                tag,
+                sendEmail,
+                coverImage: coverImageUrl,
+                wordCount,
+            },
         });
         return { success: true, slug: json.slug };
     } catch (err) {
-        return { success: false, errors: { apiError: err.message || "Upload failed" } };
+        return {
+            success: false,
+            errors: { apiError: err.message || "حديث خطأ أثناء نشر المقال" },
+        };
     }
 }
 

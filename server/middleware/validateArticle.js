@@ -25,19 +25,9 @@ const articleSchema = z.object({
         tag: z.enum(VALID_TAGS),
         sendEmail: z.boolean().optional(),
         coverImage: z.string().url(),
+        wordCount: z.number().int().positive(),
     }),
 });
-
-function countWords(doc) {
-    let count = 0;
-    function walk(node) {
-        if (node.content) node.content.forEach(walk);
-        if (node.type === "text" && node.text)
-            count += node.text.trim().split(/\s+/).filter(Boolean).length;
-    }
-    walk(doc);
-    return count;
-}
 
 function validateArticle(req, res, next) {
     const parsed = articleSchema.safeParse(req.body);
@@ -68,7 +58,7 @@ function validateArticle(req, res, next) {
         return;
     }
 
-    if (countWords(sanitized) < 500) {
+    if (data.wordCount < 500) {
         res.status(400).json({
             error: "يجب أن يحتوي المقال على 500 كلمة على الأقل",
         });
@@ -76,7 +66,10 @@ function validateArticle(req, res, next) {
     }
 
     req.validatedContent = sanitized;
-    req.articleData = data;
+    req.articleData = {
+        ...data,
+        readTime: Math.max(1, Math.ceil(data.wordCount / 120)),
+    };
     next();
 }
 

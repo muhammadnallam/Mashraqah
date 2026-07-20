@@ -62,3 +62,11 @@ export async function signInGoogle() {
 export async function signOut() {
     await authClient.signOut();
 }
+
+export async function getArticle(slug) {
+    const res = await fetch(`${API_URL}/api/article/${slug}`, {
+        next: { revalidate: 60 },
+    });
+    if (!res.ok) throw new Error("المقال غير موجود");
+    return res.json();
+}

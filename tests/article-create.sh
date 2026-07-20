@@ -1,0 +1,1 @@
+curl -d @article.json -H "Content-Type: application/json"  http://localhost:3000/api/article/new
