@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import articleRouter from "./routes/article.js";
+import uploadRouter from "./routes/upload.js";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth.js";
 import logger from "./middleware/logger.js";
@@ -29,6 +30,8 @@ app.get("/api/health", (req, res) => {
 app.all("/api/auth/{*any}", toNodeHandler(auth));
 
 app.use("/api/article", articleRouter);
+
+app.use("/api/upload", uploadRouter);
 
 app.post("/api/content", (req, res) => {
     console.log(req.body);

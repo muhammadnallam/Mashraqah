@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import { TAGS } from "@/components/constants";
 import { useRouter } from "next/navigation";
 import Button from "@/components/Button";
+import { publish, upload } from "@/lib/api";
 
 function InputField({ label, error, children }) {
     return (
@@ -206,23 +207,13 @@ const handlePublishSubmit = async (data) => {
     if (Object.keys(errors).length > 0) return { success: false, errors };
 
     try {
-        const res = await fetch("http://localhost:3000/api/article/create", {
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            method: "POST",
-            body: JSON.stringify({ content: data.content, data: data }),
-        });
-        const json = await res.json();
-        if (res.status !== 200) {
-            return {
-                success: false,
-                errors: { apiError: json.error || "حدث خطأ أثناء نشر المقال" },
-            };
-        }
-        return { success: true, slug: json.slug };
+        const coverImageUrl = await upload(data.coverImage);
+        const result = await publish(data, coverImageUrl);
+        return result;
     } catch {
-        return { success: false, errors: { apiError: "تعذر الاتصال بالخادم" } };
+        return { success: false, errors: { apiError: "Upload failed" } };
     }
+
 };
 
 export default function PublishModal({
@@ -356,38 +347,73 @@ export default function PublishModal({
             </InputField>
 
             <InputField label="عنوان محركات البحث" error={seoTitleError}>
-                <input
-                    name="title"
-                    type="text"
-                    style={{
-                        ...inputBase,
-                        ...(seoTitleError
-                            ? { border: "1px solid var(--color-error)" }
-                            : {}),
-                    }}
-                    value={seoTitle}
-                    onChange={(e) => setSeoTitle(e.target.value)}
-                    placeholder="أدخل عنوان تحسين محركات البحث"
-                />
+                <div
+                    style={{ display: "flex", flexDirection: "column", gap: 6 }}
+                >
+                    <input
+                        name="title"
+                        type="text"
+                        style={{
+                            ...inputBase,
+                            ...(seoTitleError
+                                ? { border: "1px solid var(--color-error)" }
+                                : {}),
+                        }}
+                        value={seoTitle}
+                        onChange={(e) => setSeoTitle(e.target.value)}
+                        placeholder="أدخل عنوان تحسين محركات البحث"
+                    />
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            fontSize: 12,
+                            color:
+                                seoTitle.length >= 30 && seoTitle.length <= 60
+                                    ? "var(--color-success)"
+                                    : "var(--color-error)",
+                        }}
+                    >
+                        {seoTitle.length}/60
+                    </div>
+                </div>
             </InputField>
 
             <InputField label="وصف محركات البحث" error={seoDescriptionError}>
-                <textarea
-                    name="description"
-                    style={{
-                        ...inputBase,
-                        resize: "vertical",
-                        minHeight: 80,
-                        fontFamily: "inherit",
-                        lineHeight: 1.6,
-                        ...(seoDescriptionError
-                            ? { border: "1px solid var(--color-error)" }
-                            : {}),
-                    }}
-                    value={seoDescription}
-                    onChange={(e) => setSeoDescription(e.target.value)}
-                    placeholder="أدخل وصف تحسين محركات البحث"
-                />
+                <div
+                    style={{ display: "flex", flexDirection: "column", gap: 6 }}
+                >
+                    <textarea
+                        name="description"
+                        style={{
+                            ...inputBase,
+                            resize: "vertical",
+                            minHeight: 80,
+                            fontFamily: "inherit",
+                            lineHeight: 1.6,
+                            ...(seoDescriptionError
+                                ? { border: "1px solid var(--color-error)" }
+                                : {}),
+                        }}
+                        value={seoDescription}
+                        onChange={(e) => setSeoDescription(e.target.value)}
+                        placeholder="أدخل وصف تحسين محركات البحث"
+                    />
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            fontSize: 12,
+                            color:
+                                seoDescription.length >= 100 &&
+                                seoDescription.length <= 160
+                                    ? "var(--color-success)"
+                                    : "var(--color-error)",
+                        }}
+                    >
+                        {seoDescription.length}/160
+                    </div>
+                </div>
             </InputField>
 
             <InputField label="اختر الموضوع" error={tagError}>

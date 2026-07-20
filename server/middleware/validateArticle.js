@@ -24,6 +24,7 @@ const articleSchema = z.object({
         seoDescription: z.string().min(100).max(160),
         tag: z.enum(VALID_TAGS),
         sendEmail: z.boolean().optional(),
+        coverImage: z.string().url(),
     }),
 });
 
