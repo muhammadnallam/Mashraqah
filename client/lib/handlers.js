@@ -66,8 +66,6 @@ export async function handleArticle({ coverImage, content, seoTitle, seoDescript
     }
 }
 
-// --- Auth ---
-
 export async function handleUser(mode, email, password, setUser) {
     try {
         if (mode === "login") {

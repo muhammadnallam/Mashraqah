@@ -43,8 +43,11 @@ model Article {
   slug         String   @unique
   title        String
   subtitle     String
-  content      Json
+  seoTitle     String
+  seoSubtitle  String
+  topic        String
   coverImage   String
+  content      Json
   searchVector String?
   score        Float    @default(0)
   createdAt    DateTime @default(now())
@@ -53,26 +56,10 @@ model Article {
   authorId String @db.Uuid
   author   User   @relation(fields: [authorId], references: [id])
 
-  tags      ArticleTag[]
   likes     Like[]
   bookmarks Bookmark[]
   shares    Share[]
   views     View[]       @relation("articleViews")
-}
-
-model Tag {
-  id       String       @id @default(uuid()) @db.Uuid
-  name     String       @unique
-  articles ArticleTag[]
-}
-
-model ArticleTag {
-  articleId String  @db.Uuid
-  tagId     String  @db.Uuid
-  article   Article @relation(fields: [articleId], references: [id])
-  tag       Tag     @relation(fields: [tagId], references: [id])
-
-  @@id([articleId, tagId])
 }
 
 // Interactions were separated to simplify queries and make indexing more efficient.

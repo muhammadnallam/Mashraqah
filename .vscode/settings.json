@@ -1,4 +1,7 @@
 {
-  "editor.tabSize": 4,
-  "git.enabled": false,
+    "editor.tabSize": 4,
+    "git.enabled": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.tabCompletion": "on",
 }
