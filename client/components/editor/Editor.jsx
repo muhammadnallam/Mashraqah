@@ -76,7 +76,7 @@ import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
 import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 
 // --- Styles ---
-import "@/components/tiptap-templates/simple/simple-editor.scss";
+import "./styles.scss";
 import { Trash } from "lucide-react";
 
 const MainToolbarContent = ({ onHighlighterClick, onLinkClick, isMobile }) => {

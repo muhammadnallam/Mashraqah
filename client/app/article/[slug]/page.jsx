@@ -31,10 +31,10 @@ export async function generateMetadata({ params }) {
     if (!article) return {};
     return {
         title: article.seoTitle,
-        description: article.seoDescription,
+        description: article.seoSubtitle,
         openGraph: {
             title: article.seoTitle,
-            description: article.seoDescription,
+            description: article.seoSubtitle,
             images: [{ url: article.coverImage }],
         },
         keywords: [article.topic],
@@ -46,8 +46,8 @@ export default async function ArticlePage({ params }) {
     const article = await getArticle(slug);
     if (!article) notFound();
 
-    const title = article.content?.content?.[0]?.content?.[0]?.text || "";
-    const subtitle = article.content?.content?.[1]?.content?.[0]?.text || "";
+    const title = article.title;
+    const subtitle = article.subtitle;
     const readTime = article.readTime;
     const html = renderTipTap(article.content);
     const authorInitial = article.author?.name?.[0] || "?";
@@ -71,7 +71,8 @@ export default async function ArticlePage({ params }) {
                         padding: "20px 0",
                         borderTop: "1px solid var(--color-border)",
                         borderBottom: "1px solid var(--color-border)",
-                    }}
+                    }} 
+                    className="metadata"
                 >
                     <Avatar
                         initials={authorInitial}
@@ -85,11 +86,11 @@ export default async function ArticlePage({ params }) {
                                 alignItems: "center",
                                 gap: 8,
                                 marginBottom: 4,
+                                fontSize: 15,
                             }}
                         >
                             <span
                                 style={{
-                                    fontSize: 15,
                                     fontWeight: 500,
                                     color: "var(--color-ink)",
                                 }}
@@ -102,7 +103,6 @@ export default async function ArticlePage({ params }) {
                                     border: "1px solid var(--color-border)",
                                     borderRadius: 99,
                                     padding: "3px 12px",
-                                    fontSize: 13,
                                     color: "var(--color-mid)",
                                     cursor: "pointer",
                                     fontWeight: 500,
@@ -117,22 +117,22 @@ export default async function ArticlePage({ params }) {
                                 display: "flex",
                                 alignItems: "center",
                                 gap: 8,
-                                fontSize: 13,
                                 color: "var(--color-mid)",
                             }}
                         >
-                            <span>إطناب</span>
+                            <span>{article.topic}</span>
                             <span>·</span>
                             <span
                                 style={{
                                     whiteSpace: "nowrap",
                                     flexShrink: 0,
                                 }}
+                                className="read-time"
                             >
                                 {readTime} دقائق قراءة
                             </span>
                             <span>·</span>
-                            <span>{formatDate(article.createdAt)}</span>
+                            <span className="date">{formatDate(article.createdAt)}</span>
                         </div>
                     </div>
                 </div>

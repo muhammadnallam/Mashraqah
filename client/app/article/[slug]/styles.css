@@ -1,10 +1,10 @@
 * {
-    /* font-family: var(--font-family-serif); */
-    font-size: 18px;
+    font-family: var(--font-family-serif);
 }
 
 .article-page {
     min-height: 100vh;
+    font-size: 20px;
 }
 
 .article-header {
@@ -93,12 +93,15 @@
     }
 }
 
+.metadata .readtime,
+.metadata .date {
+    font-variant-numeric: tabular-nums;
+}
+
 article {
     max-width: 740px;
     margin: 0 auto;
     padding: 40px 20px 96px;
-    /* background: var(--color-white); */
-    /* background: white; */
 }
 
 @media (min-width: 768px) {
@@ -139,15 +142,12 @@ article p.subhead {
 }
 
 article .content {
-    font-size: 19px;
     line-height: 2;
     font-weight: 400;
-    /* text-align: justify !important; */
 }
 
 @media (min-width: 768px) {
     article .content {
-        font-size: 19px;
         line-height: 2.05;
     }
 }

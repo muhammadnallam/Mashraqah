@@ -1,4 +1,4 @@
-import { SimpleEditor } from "@/components/tiptap-templates/simple/simple-editor";
+import { SimpleEditor } from "@/components/editor/Editor";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
