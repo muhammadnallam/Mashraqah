@@ -37,7 +37,7 @@ export async function createArticle(validatedContent, articleData, userId) {
 }
 
 export async function getArticleBySlug(slug) {
-    return prisma.article.findUnique({
+    const article = await prisma.article.findUnique({
         where: { slug },
         include: {
             author: {
@@ -45,10 +45,11 @@ export async function getArticleBySlug(slug) {
             },
         },
     });
+    return article;
 }
 
 export async function getArticleById(articleId) {
-    return prisma.article.findUnique({
+    const article = await prisma.article.findUnique({
         where: { id: articleId },
         include: {
             author: {
@@ -56,6 +57,7 @@ export async function getArticleById(articleId) {
             },
         },
     });
+    return article; 
 }
 
 export async function updateArticle(
@@ -76,10 +78,7 @@ export async function updateArticle(
     const contentClone = JSON.parse(JSON.stringify(validatedContent));
     contentClone.content.splice(0, 2);
 
-    console.log(title);
-    console.log(subtitle);
-
-    const res = await prisma.article.update({
+    await prisma.article.update({
         where: { id: articleId },
         data: {
             title,
@@ -93,6 +92,10 @@ export async function updateArticle(
             readTime,
         },
     });
+}
 
-    console.log(res);
+export async function deleteArticle(articleId) {
+    await prisma.article.delete({
+        where: { id: articleId },
+    });
 }

@@ -64,7 +64,7 @@ export async function publishArticle({ content, data }) {
 }
 
 export async function getArticle(slug) {
-    const res = await fetch(`${API_URL}/api/article/${slug}`, {
+    const res = await fetch(`${API_URL}/api/article/read/${slug}`, {
         // Limits fetches and db queries by saving articles in cache, any request after 300s, it will be refetched.
         // next: { revalidate: 300 },
     });
@@ -83,4 +83,14 @@ export async function updateArticle({ content, data, articleId }) {
     const json = await res.json();
     if (!res.ok) throw new Error(json.error || "حدث خطأ أثناء تعديل المقال");
     return json;
+}
+
+export async function deleteArticle(slug) {
+    const res = await fetch(`${API_URL}/api/article/delete/${slug}`, {
+        credentials: "include",
+        method: "DELETE",
+    });
+
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || "حدث خطأ أثناء حذف المقال");
 }

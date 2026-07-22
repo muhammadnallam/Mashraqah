@@ -7,6 +7,7 @@ import ConfirmModal from "@/components/ConfirmModal";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { EditorContent, EditorContext, useEditor } from "@tiptap/react";
 import { useDebouncedCallback } from "use-debounce";
+import { redirect } from "next/navigation";
 
 // --- Tiptap Core Extensions ---
 import { StarterKit } from "@tiptap/starter-kit";
@@ -70,7 +71,6 @@ import { LinkIcon } from "@/components/tiptap-icons/link-icon";
 
 // --- Hooks ---
 import { useIsBreakpoint } from "@/hooks/use-is-breakpoint";
-import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
 
 // --- Lib ---
 import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
@@ -79,6 +79,7 @@ import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 import "./styles.scss";
 import { Trash } from "lucide-react";
 import CoverImage from "./CoverImageNode";
+import { deleteArticle } from "@/lib/api";
 
 const MainToolbarContent = ({ onHighlighterClick, onLinkClick, isMobile }) => {
     return (
@@ -321,6 +322,10 @@ export function Editor({ articleContent, articleData, mode } = {}) {
                     title={"هل تريد حذف هذا المقال؟"}
                     description={"سيتم حذف هذا المقال ولن تستطيع إسترجاعه."}
                     buttonText={"حذف"}
+                    onConfirm={async () => {
+                        await deleteArticle(articleData.slug);
+                        redirect("/");
+                    }}
                     onCancel={() => setConfirmModal(false)}
                 />
                 <Toolbar ref={toolbarRef}>

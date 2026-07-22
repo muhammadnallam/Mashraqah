@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
 import { Editor } from "@/components/editor/Editor";
-import { handleArticleRead} from "@/lib/handlers";
+import { handleArticleRead } from "@/lib/handlers";
 import "@/styles/_variables.scss";
 
 export default async function EditPage({ params }) {
@@ -17,6 +17,7 @@ export default async function EditPage({ params }) {
     }
 
     const article = await handleArticleRead(slug);
+
 
     const articleContent = {
         ...article.content,
